@@ -61,11 +61,19 @@
         overflow: scroll;
     }
 
+    /* 메뉴 스크롤바 숨기기 */
+
+    #menu {
+        -ms-overflow-style: none;
+    }
+
+    #menu::-webkit-scrollbar {
+        display: none;
+    }
+
     #menu.open {
         right: 0px;
     }
-
-   
 </style>
 
 <body>
