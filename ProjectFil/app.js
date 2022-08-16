@@ -7,6 +7,7 @@ const port=8000;
 
 app.set('view engine', 'ejs'); //'ejs'탬플릿을 엔진으로 한다.
 app.use("/static", express.static("static"))
+app.use("/data", express.static("data"))
 
 
 
