@@ -46,7 +46,7 @@
 
     #menu {
         width: 350px;
-        height: 100%;
+        height: 100vh;
         position: fixed;
         top: 0px;
         right: -352px;
@@ -58,6 +58,7 @@
         -webkit-transition: All 0.2s ease;
         -moz-transition: All 0.2s ease;
         -o-transition: All 0.2s ease;
+        overflow: scroll;
     }
 
     #menu.open {
@@ -129,6 +130,14 @@
                 <p>작성하고 싶은 내용을 기록하세요!</p>
             </div>
         </div>
+        <div id="menu">
+            <div class="close"></div>
+            <div class="container">
+                <img id="chat_btn" src="/static/img/chatimg.png" alt="">
+                <iframe id="chat" src="https://service.dongledongle.com/carwashchat" frameborder="0" width="100%"
+                    height="900vh"></iframe>
+            </div>
+        </div>
     </div>
 
     <!-- footer -->
@@ -138,14 +147,7 @@
     </div>
 
 
-    <div id="menu">
-        <div class="close"></div>
-        <div class="container">
-            <img id="chat_btn" src="/static/img/chatimg.png" alt="">
-            <iframe id="chat" src="https://service.dongledongle.com/carwashchat" frameborder="0" width="100%"
-                height="900vh"></iframe>
-        </div>
-    </div>
+
 
 
     <!-- --------------------------------------------------------------------------------------------------------------->
