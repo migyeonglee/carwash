@@ -15,6 +15,11 @@ app.use("/data", express.static("data"))
 app.get("/",(req,res)=>{
     res.render("template");
 })
+
+app.get("/club",(req,res)=>{
+    res.render("club");
+})
+
 app.listen(port,()=>{
     console.log("server open: ",port);
 })
