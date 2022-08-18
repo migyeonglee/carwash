@@ -15,12 +15,13 @@
 </head>
 
 <style>
-    .make_center{
+    .make_center {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
+
     #chat_btn {
         position: fixed;
         right: 50px;
@@ -69,6 +70,36 @@
 
     #menu.open {
         right: 0px;
+    }
+
+    .table_div {
+        max-height: 600px;
+        overflow-y: scroll;
+        width: 100%;
+    }
+
+    .top_rating_div {
+        width: 100%;
+        height: 500px;
+        background-color: palegreen;
+        align-items: flex-end;
+
+    }
+
+    .top_rating_div_element {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+    .height {
+        height: 100%;
+    }
+
+    .ele {
+        position: absolute;
+        bottom: 0;
     }
 </style>
 
@@ -122,9 +153,44 @@
                 <img src="/static/img/carwash_img3.jpg" class="img-fluid rounded p-3">
             </div>
             <!-- right content -->
-
             <div class="make_center col-sm-8">
-                <table class="table table-striped table-hover" style="overflow-y: scroll; height:100px; background-color:azure;">
+                <div class="top_rating_div row">
+
+                    <div class="col-4 top_rating_div_element height" style="">
+                        <div class="test">2티어</div>
+
+                        <div class="ele"
+                            style="height: 150px; background-color:silver;width:100%; display:flex; justify-content:center;">
+                            <i class="fa-solid fa-medal fa-5x"></i>
+                        </div>
+                    </div>
+                    <div class="col-4 top_rating_div_element height" style="">
+                        <i class="fa-solid fa-crown fa-rotate-45"></i>
+
+                        <div class="test">1티어</div>
+                        <div class="card" style="width: 12rem;">
+                            <img src="..." class="card-img-top" alt="..." height="100px">
+                            <div class="card-body">
+                                <h5 class="card-title">세차장이름</h5>
+                                <p class="card-text"></p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                        <div class="ele"
+                            style="height: 200px; background-color:silver;width:100%;display:flex; justify-content:center;">
+                            <i class="fa-solid fa-medal fa-5x"></i>
+                        </div>
+                    </div>
+                    <div class="col-4 top_rating_div_element height" style="">
+                        <div class="test">3티어</div>
+                        <div class="ele"
+                            style="height: 100px; background-color:silver; width:100%;display:flex; justify-content:center;">
+                            <i class="fa-solid fa-medal fa-5x"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -133,67 +199,71 @@
                             <th scope="col">Handle</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-
-                    </tbody>
                 </table>
+                <div class="table_div">
+                    <table class="table table-striped table-hover">
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

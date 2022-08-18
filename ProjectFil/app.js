@@ -9,25 +9,15 @@ app.set('view engine', 'ejs'); //'ejs'탬플릿을 엔진으로 한다.
 app.use("/static", express.static("static"))
 app.use("/data", express.static("data"))
 
-var file=require("./data/carwash_seoul.json")
+var file=require("./data/carwash_daejun.json")
 
-let ranking=[]
-for (let index = 0; index < file.length; index++) {
-    ranking.push({
-        "like":0,
-        "dislike":0
-    })
-    
+let ranking={};
+var region = ["seoul","busan","daegu","inchun","ulsan","daejun"];
+for(let index=0;index<region.length;index++){
+    var file=require(`./data/carwash_${region[index]}.json`);
+    ranking[region[index]]=file;
 }
 
-console.log(ranking)
-
-let fs = require("fs")
-fs.writeFile("./data/ranking_seoul.json", JSON.stringify(ranking), function (err) {
-    if (err) throw err;
-    console.log('complete');
-}
-);
 
 
 
