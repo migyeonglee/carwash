@@ -15,6 +15,19 @@
 </head>
 
 <style>
+    /* 눈누난나 폰트 적용 */
+    @font-face {
+        font-family: 'NEXON Lv1 Gothic OTF';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    * {
+        font-family: 'NEXON Lv1 Gothic OTF';
+    }
+
+    /* 채팅기능 css */
     #chat_btn {
         position: fixed;
         right: 50px;
@@ -100,22 +113,21 @@
         cursor: pointer;
     }
 
-    .functioninfo:hover{
+    .functioninfo:hover {
         opacity: 0.5;
-	    -webkit-transition: .3s ease-in-out;
-	    transition: .3s ease-in-out;
+        -webkit-transition: .3s ease-in-out;
+        transition: .3s ease-in-out;
     }
 
-    .middlelogoimg{
+    .middlelogoimg {
         width: 100px;
         cursor: pointer;
     }
 
-    
+
     .middlelogoimg:hover {
         opacity: 0.8;
     }
-
 </style>
 
 <body>
@@ -145,33 +157,33 @@
 
     <div style="margin-top: 20px;" class="container overflow-hidden">
         <div class="middlelogo"><img class="middlelogoimg" src="static/img/new-product.png" alt="">
-        <p>유용한 기능</p>
+            <p>유용한 기능</p>
         </div>
         <div class="row gy-5">
             <div class="col-6">
-                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%;"
-                        src="static/img/carwash_img1.jpg" alt=""></div>
+                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%; height: 300px;"
+                        src="static/img/searchimg.jpg" alt=""></div>
                 <p class="mainname">검색 > 세차장
                 <p class="subname">전국 세차장 검색하기</p>
                 </p>
             </div>
             <div class="col-6">
-                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%;"
-                        src="static/img/carwash_img2.jpg" alt=""></div>
+                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%; height: 300px;"
+                        src="static/img/rankingimg.jpg" alt=""></div>
                 <p class="mainname">조회 > 랭킹
                 <p class="subname">전국 세차장 랭킹 조회하기</p>
                 </p>
             </div>
             <div class="col-6">
-                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%;"
-                        src="static/img/carwash_img3.jpg" alt=""></div>
+                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%; height: 300px;"
+                        src="static/img/shopimg.jpg" alt=""></div>
                 <p class="mainname">구매 > 상점
                 <p class="subname">세차용품 구매하기</p>
                 </p>
             </div>
             <div class="col-6">
-                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%;"
-                        src="static/img/carwash_img1.jpg" alt=""></div>
+                <a href="/club"><div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%; height: 300px;"
+                        src="static/img/clubimg.png" alt=""></div></a>
                 <p class="mainname">조회 > 동호회
                 <p class="subname">전국 세차 동호회 조회하기</p>
                 </p>
