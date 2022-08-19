@@ -47,6 +47,15 @@ app.get("/ranking", (req, res) => {
     res.render("ranking",{region:region,rating:rating,car_washer_name:car_washer_name,ranking_index:ranking_index});
 })
 
-app.listen(port, () => {
-    console.log("server open: ", port);
+app.get("/club",(req,res)=>{
+    res.render("club");
+})
+
+app.get("/clubdetail1",(req,res)=>{
+    res.render("clubdetail1");
+})
+
+app.listen(port,()=>{
+    console.log("server open: ",port);
+
 })
