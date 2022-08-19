@@ -69,11 +69,8 @@
             justify-items: center;
             align-items: center;
         }
-        
-        .pagination {
-            justify-content: center;
-        }
     </style>
+
 </head>
 
 <body>
@@ -112,7 +109,6 @@
             </div>
         </div>
     </nav>
-
     <!-- carousel -->
     <!-- 광고 -->
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
@@ -198,15 +194,20 @@
     <!-- grid -->
     <!-- col hover 시 확대 + text 대신 col click 시 page move -->
     <!-- 상품 목록 -->
+
+    <div>
+        <select name="limit" id="custom-select" onchange="this.parentElement.parentEl"></select>
+    </div>
     <div class="container text-center">
         <div class="row" name="page1">
             <% for(var i = 0; i < sn.length; i++) { %>
                 <div class="col-4">
-                    <a href="/shop_item?img=<%=sn[i].name%>" style="text-decoration: none;">
-                        <img src=<%=sn[i].item_image%> alt="">
+                    <a href="/shop_item?img=<%=sn[i].item_img%>&name=<%=sn[i].name%>&price=<%=sn[i].price%>&infor=<%=sn[i].infor_img%>" style="text-decoration: none;">
+                        <img src=<%=sn[i].item_img%> alt="">
                         <p style="height: 50px; text-align: left; color: black;">
                             <%=sn[i].name%>
                         </p>
+
                         <hr>
                         <p style="text-align: end; color: red;  ">
                             <%=sn[i].price%>
@@ -217,17 +218,17 @@
         </div>
     </div>
 
-    </script> -->
+    </script>
     <br>
     <!-- pagination -->
     <nav aria-label="Page navigation example">
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
             <li class="page-item">
                 <a class="page-link" href="#page_start" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li class="page-item"><a name="page_start" class="page-link" href="#page1">1</a></li>
+            <li class="page-item active"><a name="page_start" class="page-link" href="#page1">1</a></li>
             <li class="page-item"><a class="page-link" href="#page2">2</a></li>
             <li class="page-item"><a name="page_end" class="page-link" href="#page3">3</a></li>
             <li class="page-item">
@@ -237,7 +238,7 @@
             </li>
         </ul>
     </nav>
-
+    <div class="test"></div>
 </body>
 
 </html>
