@@ -15,6 +15,19 @@
 </head>
 
 <style>
+    @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+    @font-face {
+        font-family: 'NEXON Lv1 Gothic OTF';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    * {
+        font-family: "NEXON Lv1 Gothic OTF";
+    }
+
     .make_center {
         display: flex;
         align-items: center;
@@ -82,7 +95,7 @@
     .top_rating_div {
         width: 100%;
         height: 500px;
-        
+
         align-items: flex-end;
 
     }
@@ -102,6 +115,135 @@
         position: absolute;
         bottom: 0;
     }
+
+    @media (min-width: 768px) {
+        .container {
+            width: 750px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .container {
+            width: 940px;
+        }
+    }
+
+    /*사실 이 블럭은 없어도 된다*/
+    @media (min-width: 1200px) {
+        .container {
+            width: 1200px;
+        }
+    }
+
+    .feedback_box {
+        width: 100%;
+        height: 300px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px gray;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .check_box {
+        width: 100%;
+        height: 150px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px gray;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+
+    }
+
+    .w-btn {
+        position: relative;
+        border: none;
+        display: inline-block;
+        padding: 15px 30px;
+        box-shadow: 0px 0px 5px gray;
+        border-radius: 5px;
+        font-family: "paybooc-Light", sans-serif;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.25s;
+    }
+
+    .w-btn:hover {
+        background-color: gray;
+        color: white;
+    }
+
+    .w-btn-indigo {
+        background-color: gainsboro;
+        color: black;
+    }
+
+    .select_bar {
+        display: flex;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .select_bar1 {
+        width: 100%;
+        border: 0;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px gray;
+        margin-bottom: 10px
+    }
+
+    .select_local {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        font-size: large;
+        margin-bottom: 10px;
+    }
+
+    .table_bar {
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px gray;
+        margin-bottom: 10px;
+        background-color: gray;
+        color: white
+    }
+
+    .ranking_div {
+        width: 100%;
+        height: 500px;
+    }
+
+    .ranking_div_mini {
+        position: absolute;
+        border-radius: 5px;
+        box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+        margin-bottom: 10px;
+        width: 200px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .cup_pos {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border-radius: 100px;
+        box-shadow: 0px 0px 5px gray;
+        background-color: #ebebeb;
+        top: -20px;
+    }
 </style>
 
 <body>
@@ -109,14 +251,6 @@
     <script>
         let selected_val = $('#sel option:selected').val();
     </script>
-    <div class="jumbotron text-center mb-0">
-        <h1>
-            <a href="/" style="text-decoration: none; color: gray;">
-                Foambble Bobble Car Wash
-            </a>
-        </h1>
-        <p>전국 셀프세차인에게 유용한 정보들과 세차인들간의 커뮤니케이션을 위한 사이트</p>
-    </div>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a href="/" class="navbar-brand">Foambble Bobble</a>
         <!-- Toggle Button -->
@@ -137,33 +271,8 @@
         <div class="row">
             <!-- left content -->
             <div class="col-sm-4">
-                <h2>About Foambble Bobble</h2>
-                <p>코딩온 웹프로젝트 6조</p>
-                <img src="/static/img/carwash_img1.jpg" class="img-fluid rounded">
-                <p>세차좋아요</p>
-                <hr>
-                <!-- side menu (link) -->
-                <h3>사이드 메뉴</h3>
-                <p>이웃 홈페이지를 통해 세차 소식을 즐겨보세요!</p>
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-action"><a href="#">세차 폼</a></li>
-                    <li class="list-group-item list-group-item-action"><a href="#">경기북부가 세차왕이야!</a></li>
-                    <li class="list-group-item list-group-item-action"><a href="#">세린이모임</a></li>
-                </ul>
-                <hr>
-                <h3>오늘의 세차장</h3>
-                <div class="card" style="width: 100%;">
-                    <img src="/static/img/carwash_img1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">
-                        소개될 주차장을 지역별로 보세요!
-                      </p>
-                    </div>
-                  </div>
-            </div>
-            <!-- right content -->
-            <div class="make_center col-sm-8">
-                <select id="sel" class="form-select" aria-label="Default select example" style="width: 100%;">
+                <h2>피드백</h2>
+                <select id="selct_feedback" class="form-select select_bar1" aria-label="Default select example">
                     <option selected>Open this select menu</option>
                     <% for (var i=0; i<region.length; i++) { %>
                         <option value="<%=region[i]%>">
@@ -171,41 +280,115 @@
                         </option>
                         <% } %>
                 </select>
-                <div class="top_rating_div row">
-
-                    <div class="col-4 top_rating_div_element height" style="">
-                        <div class="test">2티어</div>
-                        <img src="/static/img/siver_medal.png" class="img-fluid rounded" style="position:relative;top:70px;  height:200px">
-                        <div class="tear" style="position:relative; top:130px; font-size: larger;"></div>
-                        <!-- <div class="ele"
-                            style="height: 150px; background-color:silver;width:100%; display:flex; justify-content:center;">
-                            <i class="fa-solid fa-medal fa-5x"></i>
-                        </div> -->
+                <select id="selct_feedback" class="form-select select_bar1" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <% for (var i=0; i<region.length; i++) { %>
+                        <option value="<%=region[i]%>">
+                            <%=region[i]%>
+                        </option>
+                        <% } %>
+                </select>
+                <div class="check_box">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label">
+                            세차장이 깨끗해요!
+                        </label>
                     </div>
-                    <div class="col-4 top_rating_div_element height" style="">
-                        <i class="fa-solid fa-crown fa-rotate-45"></i>
-
-                        <div class="test">1티어</div>
-                        <img src="/static/img/gold_medal.png" class="img-fluid rounded" style="position:relative;top:70px; height:200px">
-                        <div class="tear" style="font-size: larger;position:relative; top:120px;">
-                            지역을 선택해주세요!
-                        </div>
-                        <!-- <div class="ele"
-                            style="height: 200px; background-color:silver;width:100%;display:flex; justify-content:center;">
-                            <i class="fa-solid fa-medal fa-5x"></i>
-                        </div> -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label">
+                            사장님이 친절해요!
+                        </label>
                     </div>
-                    <div class="col-4 top_rating_div_element height" style="">
-                        <div class="test">3티어</div>
-                        <img src="/static/img/bronze_medal.png" class="img-fluid rounded" style="position:relative;top:70px; height:200px">
-                        <div class="tear" style="font-size: larger; position:relative; top:130px;"></div>
-                        <!-- <div class="ele"
-                            style="height: 100px; background-color:silver; width:100%;display:flex; justify-content:center;">
-                            <i class="fa-solid fa-medal fa-5x"></i>
-                        </div> -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                        <label class="form-check-label">
+                            가격이 존나싸요!
+                        </label>
                     </div>
                 </div>
-                <div class="row" style="width: 100%; border:1px solid black; border-radius:5px">
+                <div class="check_box">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            좋아요
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            싫어요
+                        </label>
+                    </div>
+
+                </div>
+                <div>
+                    <button class="w-btn w-btn-indigo" type="button" id="openModalBtn" style="width: 100%;">
+                        제출하기
+                    </button>
+                    <!-- 모달 영역 -->
+                    <div id="modalBox" class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">제출성공</h4>
+                                </div>
+                                <div class="modal-body"> 성공적으로 피드백을 전달받았습니다! 순위에 반영후 업체측에 피드백을 전달하겠습니다 </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary">확인</button>
+                                    <button type="button" class="btn btn-default" id="closeModalBtn">취소</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h3>오늘의 세차장</h3>
+                <div class="card" style="width: 100%;">
+                    <img src="/static/img/carwash_img1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">
+                            소개될 주차장을 지역별로 보세요!
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- right content -->
+
+            <div class="make_center col-sm-8">
+                <div class="ranking_div" style="position: reletive;">
+                    <div class="ranking_div_mini"
+                        style="z-index:3; top:7%; left:5%;background-image: linear-gradient(to right,#2484fc,#6fa5ec);">
+                        <div class="cup_pos">
+                            <img src="/static/img/cup_blue.png" class="card-img-top" alt="...">
+                        </div>
+                        <i class="fa-solid fa-1 fa-5x"></i>
+                    </div>
+                    <div class="ranking_div_mini" style="z-index:2;top:12% ;left:35%">
+                        <i class="fa-solid fa-2 fa-5x"></i>
+
+                    </div>
+                    <div class="ranking_div_mini" style="z-index:1; top:17% ;left:65%">
+                        <i class="fa-solid fa-3 fa-5x"></i>
+
+                    </div>
+                </div>
+                <div class="select_bar">
+                    <div class="select_local">
+                        지역 선택
+                    </div>
+                    <select id="sel" class="form-select select_bar1" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <% for (var i=0; i<region.length; i++) { %>
+                            <option value="<%=region[i]%>">
+                                <%=region[i]%>
+                            </option>
+                            <% } %>
+                    </select>
+                </div>
+                <div class="row table_bar">
                     <div class="col-3" style="font-size:20px; position:reletive; ">
                         순위
                     </div>
@@ -233,6 +416,7 @@
 
                     </tbody>
                 </table> -->
+
                 <div class="table_div">
                     <table class="table table-striped table-hover">
                         <tbody class="app_sel">
@@ -267,6 +451,7 @@
 
                 <!-- --------------------------------------------------------------------------------------------------------------->
                 <script>
+                    $('#openModalBtn').on('click', function () { $('#modalBox').modal('show'); }); $('#closeModalBtn').on('click', function () { $('#modalBox').modal('hide'); });
 
                     var car_washer_name = '<%-aaaaaa%>';
                     var ranking_index = '<%-aaaaaa1%>';
@@ -296,9 +481,17 @@
 
                         }
                         $(".app_sel").html(html)
-                        $(".tear")[0].textContent=`${c[local][r[local][1]]}`;
-                        $(".tear")[1].textContent=`${c[local][r[local][0]]}`;
-                        $(".tear")[2].textContent=`${c[local][r[local][2]]}`;
+
+                        let html1 = `<div class="cup_pos">
+                            <img src="/static/img/cup_blue.png" class="card-img-top" alt="...">
+                        </div>
+                        <i class="fa-solid fa-1 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][1]]}`;
+                        let html2 = `<i class="fa-solid fa-2 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][0]]}`;
+                        let html3 = `<i class="fa-solid fa-3 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][2]]}`;
+                        $(".ranking_div_mini").eq(0).html(html1)
+                        $(".ranking_div_mini").eq(1).html(html2)
+                        $(".ranking_div_mini").eq(2).html(html3)
+
                         $(".card-text").text(`${c[local][r[local][0]]} 오늘의 최고 goat`)
                     })
                     // 버튼 클릭시 우측에서 슬라이드 나오면서 버튼은 사라짐
