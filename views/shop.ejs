@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap_css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!-- bootstrap_js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        hr {
+            border: 1px solid gainsboro;
+        }
+        
+        .carousel-item>img {
+            height: 300px;
+        }
+        /* .container {
+            align-items: center;
+        }
+         */
+        
+        .row {
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: start;
+        }
+        
+        .col-4 {
+            box-shadow: 0px 0px 5px gainsboro;
+            border-radius: 5px;
+            width: 200px;
+            height: 300px;
+            margin: 10px 20px 30px 20px;
+        }
+        
+        .color {
+            background-color: gainsboro;
+        }
+        
+        .col-4>a>img {
+            box-shadow: 0px 0px 5px gainsboro;
+            margin-top: 10px;
+            align-items: center;
+            width: 170px;
+            height: 170px;
+        }
+        
+        .Kategorie {
+            margin: 20px 30px 20px 30px;
+            justify-items: center;
+            align-items: center;
+        }
+        
+        .col-4:hover {
+            transform: scale(1.2)
+        }
+        
+        .nav-tabs>button {
+            justify-items: center;
+            align-items: center;
+        }
+        
+        .pagination {
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- carousel -->
+    <!-- 광고 -->
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="" class="d-block w-100 color" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="" class="d-block w-100 color" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="" class="d-block w-100 color" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- nacs and tabs -->
+    <!-- 카테고리 -->
+    <div class="Kategorie">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#exterior-tab-pane" type="button" role="tab" aria-controls="exterior-tab-pane" aria-selected="true">외장관리</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#built-in-tab-pane" type="button" role="tab" aria-controls="built-in-tab-pane" aria-selected="false">실내관리</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="wax-coating-tab" data-bs-toggle="tab" data-bs-target="#wax-coating-tab-pane" type="button" role="tab" aria-controls="wax-coating-tab-pane" aria-selected="false">왁스/코팅</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#towel-tab-pane" type="button" role="tab" aria-controls="towel-tab-pane" aria-selected="false">세차타올</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#other-tab-pane" type="button" role="tab" aria-controls="other-tab-pane" aria-selected="false">기타용품</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="exterior-tab-pane" role="tabpanel" aria-labelledby="exterior-tab" tabindex="0">
+                <a href="">...</a>
+            </div>
+            <div class="tab-pane fade" id="built-in-tab-pane" role="tabpanel" aria-labelledby="built-in-tab" tabindex="0">
+                <a href="">...</a>
+            </div>
+            <div class="tab-pane fade" id="wax-coating-tab-pane" role="tabpanel" aria-labelledby="wax-coating-tab" tabindex="0">
+                <a href="">...</a>
+            </div>
+            <div class="tab-pane fade" id="towel-tab-pane" role="tabpanel" aria-labelledby="towel-tab" tabindex="0">
+                <a href="">...</a>
+            </div>
+            <div class="tab-pane fade" id="other-tab-pane" role="tabpanel" aria-labelledby="other-tab" tabindex="0">
+                <a href="">...</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <!-- grid -->
+    <!-- col hover 시 확대 + text 대신 col click 시 page move -->
+    <!-- 상품 목록 -->
+    <div class="container text-center">
+        <div class="row" name="page1">
+            <% for(var i = 0; i < sn.length; i++) { %>
+                <div class="col-4">
+                    <a href="/shop_item?img=<%=sn[i].name%>" style="text-decoration: none;">
+                        <img src=<%=sn[i].item_image%> alt="">
+                        <p style="height: 50px; text-align: left; color: black;">
+                            <%=sn[i].name%>
+                        </p>
+                        <hr>
+                        <p style="text-align: end; color: red;  ">
+                            <%=sn[i].price%>
+                        </p>
+                    </a>
+                </div>
+                <% } %>
+        </div>
+    </div>
+
+    </script> -->
+    <br>
+    <!-- pagination -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="#page_start" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a name="page_start" class="page-link" href="#page1">1</a></li>
+            <li class="page-item"><a class="page-link" href="#page2">2</a></li>
+            <li class="page-item"><a name="page_end" class="page-link" href="#page3">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#page_end" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+</body>
+
+</html>
