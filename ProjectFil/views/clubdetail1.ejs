@@ -27,6 +27,19 @@
 </head>
 
 <style>
+    /* 눈누난나 폰트 적용 */
+    @font-face {
+        font-family: 'NEXON Lv1 Gothic OTF';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    * {
+        font-family: 'NEXON Lv1 Gothic OTF';
+    }
+
+    /* 채팅기능 css */
     #chat_btn {
         position: fixed;
         right: 50px;
@@ -108,7 +121,7 @@
         border-right: 2px solid;
     }
 
-    .iq-media-group.me-3{
+    .iq-media-group.me-3 {
         margin-left: 20px;
 
     }
@@ -127,9 +140,111 @@
 
     /* 동호회 게시글 작성하기 버튼 색상 조절 */
     .bg-soft-primary {
-    color: #48a3e6;
-    background-color: rgba(80,181,255,.2)!important;
-}
+        color: #48a3e6;
+        background-color: rgba(80, 181, 255, .2) !important;
+    }
+
+
+
+
+
+
+    /* 우측 사이드바 회원검색 검색창 */
+    .iq-search-bar .search-input {
+        width: 100%;
+        height: 2.5rem;
+        padding: 0.313rem 2.5rem 0.313rem 0.938rem;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        border: none;
+        border: 1px solid #f1f1f1;
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+    }
+
+
+    /* 우측 사이드바 회원검색 돋보기 아이콘 */
+    .members-search .searchbox .search-link {
+        top: 0.313rem;
+    }
+
+    .iq-search-bar .searchbox .search-link {
+        position: absolute;
+        right: 30px;
+        top: 95px;
+        font-size: 1rem;
+    }
+
+
+    /* 카드박스 css */
+    .card {
+        -webkit-box-shadow: 0 0 1.25rem 0 rgb(0 0 0 / 10%);
+        box-shadow: 0 0 1.25rem 0rgba(0, 0, 0, .1);
+        margin-bottom: 1rem;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+    }
+
+    .card .card-header {
+        margin-bottom: 0;
+        -ms-flex-align: center !important;
+        -webkit-box-align: center !important;
+        align-items: center !important;
+        border: 0;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+
+    .comment-attagement {
+        position: absolute;
+        left: auto;
+        right: 15px;
+        font-size: 1.25rem;
+    }
+
+
+    /* 좋아요 드롭다운 화살표 제거 */
+    .dropdown-toggle::after {
+        display: none;
+    }
+
+    /* 좋아요 이모티콘 모음 정렬 */
+    .dropdown-menu.py-2.show {
+        width: 270px;
+    }
+
+    /* 동호회 설정 텍스트 좌측정렬 */
+    .flex-grow-1.ms-3 {
+        text-align: left;
+    }
+
+    /* 가입하기 좌측 멤버목록 */
+    .avatar-100 {
+        height: 100px;
+        width: 100px;
+        line-height: 100px;
+    }
+
+    /* 공유 텍스트 스타일 */
+    .feather-icon a {
+        color: #777d74;
+        font-weight: 300;
+        text-decoration: none;
+    }
+
+    /* 게시글 이름 hover시 텍스트 밑줄제거 */
+    .posttitle:hover {
+        text-decoration: none;
+    }
 </style>
 
 <body>
@@ -150,16 +265,14 @@
         </div>
     </nav>
     <!-- header -->
-    <div class="jumbotron text-center mb-0" style="height: 500px; margin-top: 50px;">
+    <!-- <div class="jumbotron text-center mb-0" style="height: 300px; margin-top: 50px;">
         <h1>
             <a href="/" style="text-decoration: none; color: gray;">
                 Foambble Bobble Car Wash
             </a>
         </h1>
         <p>전국 셀프세차인에게 유용한 정보들과 세차인들간의 커뮤니케이션을 위한 사이트</p>
-    </div>
-    </div>
-    </div>
+    </div> -->
     <div id="menu">
         <div class="close"></div>
         <div class="container">
@@ -173,10 +286,12 @@
 
     <div class="header-for-bg">
         <div class="background-header position-relative">
-            <img src="static/img/carwash_img1.jpg" class="img-fluid w-100" alt="header-bg" style="height: 30vh;">
+            <img src="static/img/clubmainimg1.jpg" class="img-fluid w-100" alt="header-bg"
+                style="height: 30vh; object-fit: cover; margin-top: 50px;">
             <div class="title-on-header">
-                <div style="background-color: rgba(128, 128, 128, 0.2); width: 100%;" class="data-block">
-                    <h2 style="color: white; font-size: 35px; font-weight:bold">경기북부 드라이빙 모임</h2>
+                <div style="background-color: rgba(128, 128, 128, 0.2); width: 100%; margin-top: 50px;"
+                    class="data-block">
+
                 </div>
             </div>
         </div>
@@ -189,11 +304,12 @@
                     <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
                         <div class="group-info d-flex align-items-center">
                             <div class="me-3">
-                                <img class="rounded-circle img-fluid avatar-100" src="static/img/mainuser.png" alt="">
+                                <img class="rounded-circle img-fluid avatar-100" src="static/img/carwash_clubimg1.jpg"
+                                    alt="">
                             </div>
                             <div class="info">
-                                <h4>경기북부 드라이빙 모임</h4>
-                                <p class="mb-0"><i class="ri-lock-fill pe-2"></i>비공개 모임 . 1500 회원</p>
+                                <h4>세린이즈</h4>
+                                <p class="mb-0"><i class="ri-lock-fill pe-2"></i>비공개 모임 . 520 회원</p>
                             </div>
                         </div>
                         <div class="group-member d-flex align-items-center  mt-md-0 mt-2">
@@ -246,8 +362,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="user-img">
-                                    <img src="static/img/mainuser.png" alt="userimg"
-                                        class="avatar-60 rounded-circle">
+                                    <img src="static/img/mainuser.png" alt="userimg" class="avatar-60 rounded-circle">
                                 </div>
                                 <form class="post-text ms-3 w-100 " data-bs-toggle="modal" data-bs-target="#post-modal"
                                     action="#">
@@ -256,7 +371,7 @@
                                 </form>
                             </div>
                             <hr>
-                            <ul  class=" post-opt-block d-flex list-inline m-0 p-0 flex-wrap">
+                            <ul class=" post-opt-block d-flex list-inline m-0 p-0 flex-wrap">
                                 <li
                                     class="bg-soft-primary rounded p-2 pointer d-flex align-items-center me-3 mb-md-0 mb-2">
                                     <img src="static/img/사진,비디오.png" alt="icon" class="img-fluid me-2">
@@ -403,13 +518,13 @@
                                 <div class="user-post-data py-3">
                                     <div class="d-flex justify-content-between">
                                         <div class=" me-3">
-                                            <img class="rounded-circle img-fluid" src="static/img/mainuser.png"
-                                                alt="">
+                                            <img class="rounded-circle img-fluid" src="static/img/mainuser.png" alt="">
                                         </div>
                                         <div class="w-100">
                                             <div class="d-flex justify-content-between">
                                                 <div class="">
-                                                    <h5 class="mb-0 d-inline-block"><a href="#" class="">대조남</a></h5>
+                                                    <h5 class="mb-0 d-inline-block"><a href="#"
+                                                            class="posttitle">대조남</a></h5>
                                                     <p class="mb-0">8시간전</p>
                                                 </div>
                                                 <div class="card-post-toolbar">
@@ -454,8 +569,8 @@
                                     </div>
                                 </div>
                                 <div class="user-post">
-                                    <a href="javascript:void();"><img src="static/img/carwash_img1.jpg"
-                                            alt="post-image" class="img-fluid w-100" /></a>
+                                    <a href="javascript:void();"><img src="static/img/carwash_img1.jpg" alt="post-image"
+                                            class="img-fluid w-100" /></a>
                                 </div>
                                 <div class="comment-area mt-3">
                                     <div class="d-flex justify-content-between align-items-center flex-wrap">
@@ -465,37 +580,36 @@
                                                     <div class="dropdown">
                                                         <span class="dropdown-toggle" data-bs-toggle="dropdown"
                                                             aria-haspopup="true" aria-expanded="false" role="button">
-                                                            <img src="../assets/images/icon/01.png" class="img-fluid"
-                                                                alt="">
+                                                            <img src="static/img/icon01.png" class="img-fluid" alt="">
                                                         </span>
                                                         <div class="dropdown-menu py-2">
                                                             <a class="ms-2 me-2" href="#" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="좋아요"><img
-                                                                    src="../assets/images/icon/01.png" class="img-fluid"
+                                                                    src="static/img/icon01.png" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="me-2" href="#" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="하트"><img
-                                                                    src="../assets/images/icon/02.png" class="img-fluid"
+                                                                    src="static/img/icon02.png" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="me-2" href="#" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="기쁨"><img
-                                                                    src="../assets/images/icon/03.png" class="img-fluid"
+                                                                    src="static/img/icon03.png" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="me-2" href="#" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="하하"><img
-                                                                    src="../assets/images/icon/04.png" class="img-fluid"
+                                                                    src="static/img/icon04.png" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="me-2" href="#" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="고민"><img
-                                                                    src="../assets/images/icon/05.png" class="img-fluid"
+                                                                    src="static/img/icon05.png" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="me-2" href="#" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="슬픔"><img
-                                                                    src="../assets/images/icon/06.png" class="img-fluid"
+                                                                    src="static/img/icon06.png" class="img-fluid"
                                                                     alt=""></a>
                                                             <a class="me-2" href="#" data-bs-toggle="tooltip"
                                                                 data-bs-placement="top" title="사랑스러움"><img
-                                                                    src="../assets/images/icon/07.png" class="img-fluid"
+                                                                    src="static/img/icon07.png" class="img-fluid"
                                                                     alt=""></a>
                                                         </div>
                                                     </div>
@@ -533,7 +647,53 @@
                                         </div>
                                     </div>
                                     <hr>
-                                   
+                                    <!-- 공유 버튼 클릭시 모달창 생성 -->
+                                    <div class="offcanvas offcanvas-bottom share-offcanvas" tabindex="-1" id="share-btn"
+                                        aria-labelledby="shareBottomLabel" style="visibility: hidden;"
+                                        aria-hidden="true">
+                                        <div class="offcanvas-header">
+                                            <h5 class="offcanvas-title" id="shareBottomLabel">Share</h5>
+                                            <button type="button" class="btn-close text-reset"
+                                                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body small">
+                                            <div class="d-flex flex-wrap align-items-center">
+                                                <div class="text-center me-3 mb-3">
+                                                    <img src="static/img/icon08.png" class="img-fluid rounded mb-2"
+                                                        alt="">
+                                                    <h6>Facebook</h6>
+                                                </div>
+                                                <div class="text-center me-3 mb-3">
+                                                    <img src="static/img/icon09.png" class="img-fluid rounded mb-2"
+                                                        alt="">
+                                                    <h6>Twitter</h6>
+                                                </div>
+                                                <div class="text-center me-3 mb-3">
+                                                    <img src="static/img/icon10.png" class="img-fluid rounded mb-2"
+                                                        alt="">
+                                                    <h6>Instagram</h6>
+                                                </div>
+                                                <div class="text-center me-3 mb-3">
+                                                    <img src="static/img/icon11.png" class="img-fluid rounded mb-2"
+                                                        alt="">
+                                                    <h6>Google Plus</h6>
+                                                </div>
+                                                <div class="text-center me-3 mb-3">
+                                                    <img src="static/img/icon12.png" class="img-fluid rounded mb-2"
+                                                        alt="">
+                                                    <h6>In</h6>
+                                                </div>
+                                                <div class="text-center me-3 mb-3">
+                                                    <img src="static/img/icon13.png" class="img-fluid rounded mb-2"
+                                                        alt="">
+                                                    <h6>YouTube</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                                     <form class="comment-text d-flex align-items-center mt-3"
                                         action="javascript:void(0);">
                                         <input type="text" class="form-control rounded" placeholder="내용을 입력하세요">
@@ -655,7 +815,6 @@
 
 
     </script>
-
 </body>
 
 </html>

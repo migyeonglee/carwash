@@ -15,9 +15,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 </head>
 
 <style>
+    /* 눈누난나 폰트 적용 */
+    @font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+
+/* 채팅기능 css */
+
     #chat_btn {
         position: fixed;
         right: 50px;
@@ -166,11 +182,13 @@
     }
 
     .description .d-text {
-        padding: 15px;
+        padding: 20px;
+        text-align: center;
     }
 
     .d-text h3 {
         font-size: 24px;
+        
     }
 
     .d-text p {
@@ -178,7 +196,7 @@
     }
 
     .list-item:hover .description {
-        opacity: 1;
+        opacity: 0.5;
     }
 
     .simple-pagination ul {
@@ -265,13 +283,12 @@
     </nav>
     <!-- header -->
     <div class="jumbotron text-center mb-0"
-        style="height: 500px; margin-top: 50px;">
+        style="margin-top: 50px;">
         <h1>
             <a href="/" style="text-decoration: none; color: gray;">
-                Foambble Bobble Car Wash
+                Foambble Bobble Club
             </a>
         </h1>
-        <p>전국 셀프세차인에게 유용한 정보들과 세차인들간의 커뮤니케이션을 위한 사이트</p>
     </div>
 
     <!-- <div class="container pt-3">
@@ -319,7 +336,7 @@
 
             <div class="list-item"><a class="remoteclubdetail" href="clubdetail1">
                 <div class="content">
-                    <img src="static/img/carwash_img1.jpg" alt="">
+                    <img src="static/img/carwash_clubimg1.jpg" alt="">
                     <div class="text">
                         <h3>세린이즈</h3>
                         <p>세린이들의 모임!</p>
@@ -329,15 +346,8 @@
 
                 <div class="description">
                     <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
+                        <h3>세차환자는 오지마세요!</h3>
+                       <p>세차용품 무상지원 합니다.</p>
                     </div>
                 </div>
 
@@ -352,7 +362,7 @@
 
             <div class="list-item">
                 <div class="content">
-                    <img src="static/img/carwash_img1.jpg" alt="">
+                    <img src="static/img/carwash_img2.jpg" alt="">
                     <div class="text">
                         <h3>초보자</h3>
                         <p>초보자들의 모임!</p>
@@ -362,15 +372,8 @@
 
                 <div class="description">
                     <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
+                        <h3>공지사항</h3>
+                       <p>코로나로 인해 오프라인 모임 금지입니다.</p>
                     </div>
                 </div>
 
@@ -384,7 +387,7 @@
 
             <div class="list-item">
                 <div class="content">
-                    <img src="static/img/carwash_img1.jpg" alt="">
+                    <img src="static/img/carwash_img3.jpg" alt="">
                     <div class="text">
                         <h3>서울세차</h3>
                         <p>서울세차 모임!</p>
@@ -394,15 +397,8 @@
 
                 <div class="description">
                     <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
+                        <h3>서울사람만 오세요</h3>
+                        <p>타지역 출입금지!</p>
                     </div>
                 </div>
 
@@ -416,7 +412,7 @@
 
             <div class="list-item">
                 <div class="content">
-                    <img src="static/img/carwash_img2.jpg" alt="">
+                    <img src="static/img/carwash_img4.jpg" alt="">
                     <div class="text">
                         <h3>의정부환자모여라</h3>
                         <p>의정부 세차환자 모임!</p>
@@ -426,15 +422,8 @@
 
                 <div class="description">
                     <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
+                        <h3>주의!</h3>
+                        <p>가입은 경기북부까지만 가능합니다.</p>
                     </div>
                 </div>
 
@@ -448,7 +437,7 @@
 
             <div class="list-item">
                 <div class="content">
-                    <img src="static/img/carwash_img2.jpg" alt="">
+                    <img src="static/img/carwash_img5.jpg" alt="">
                     <div class="text">
                         <h3>어려운세차</h3>
                         <p>어려운세차 모임!</p>
@@ -458,15 +447,8 @@
 
                 <div class="description">
                     <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
+                        <h3>초보자는 오지마세요.</h3>
+                        <p>기본 세차시간 3시간입니다.</p>
                     </div>
                 </div>
 
@@ -480,7 +462,7 @@
 
             <div class="list-item">
                 <div class="content">
-                    <img src="static/img/carwash_img2.jpg" alt="">
+                    <img src="static/img/carwash_img6.jpg" alt="">
                     <div class="text">
                         <h3>카워시스</h3>
                         <p>세차 모임!</p>
@@ -490,15 +472,8 @@
 
                 <div class="description">
                     <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
+                        <h3>알림</h3>
+                       <p>세차 좋아한다면 누구든지 오세요.</p>
                     </div>
                 </div>
 
@@ -511,7 +486,7 @@
 
             <div class="list-item">
                 <div class="content">
-                    <img src="static/img/carwash_img3.jpg" alt="">
+                    <img src="static/img/carwash_img7.jpg" alt="">
                     <div class="text">
                         <h3>차차차</h3>
                         <p>차가좋아 모임!</p>
@@ -521,15 +496,8 @@
 
                 <div class="description">
                     <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
+                        <h3>공지사항</h3>
+                        <p>자동세차 한번이라도 돌렸으면 오지마세요.</p>
                     </div>
                 </div>
 
@@ -543,9 +511,9 @@
 
             <div class="list-item">
                 <div class="content">
-                    <img src="static/img/carwash_img3.jpg" alt="">
+                    <img src="static/img/carwash_img8.jpg" alt="">
                     <div class="text">
-                        <h3>차버블</h3>
+                        <h3>외제차버블</h3>
                         <p>버블버블 모임!</p>
                         <p class="currentmember">현재 인원</p>
                     </div>
@@ -553,15 +521,8 @@
 
                 <div class="description">
                     <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
+                        <h3>외제차 세차 모임입니다.</h3>
+                        <p>국산차는 가입불가!</p>
                     </div>
                 </div>
 
@@ -576,25 +537,18 @@
 
             <div class="list-item">
                 <div class="content">
-                    <img src="static/img/carwash_img3.jpg" alt="">
+                    <img src="static/img/carwash_img9.jpg" alt="">
                     <div class="text">
-                        <h3>폼블스</h3>
-                        <p>폼블폼블 모임!</p>
+                        <h3>포폼블스</h3>
+                        <p>포르쉐 폼블폼블 모임!</p>
                         <p class="currentmember">현재 인원</p>
                     </div>
                 </div>
 
                 <div class="description">
                     <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
+                        <h3>알림!</h3>
+                        <p>포르쉐 차주 세차모임</p>
                     </div>
                 </div>
 
