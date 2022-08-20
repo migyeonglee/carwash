@@ -3,9 +3,38 @@ const express = require("express");
 const app = express();
 app.set("view engine", "ejs");
 app.use('/static', express.static('static'));
+app.use("/data", express.static("data"))
 //server port Number
 const port = 3000;
-// main_shop_page
+let ranking_index={"서울특별시":[],"부산광역시":[],"대구광역시":[],"인천광역시":[],"울산광역시":[],"대전광역시":[]}
+let rating={};
+var region = ["서울특별시","부산광역시","대구광역시","인천광역시","울산광역시","대전광역시"];
+for (let index = 0; index < region.length; index++) {
+    let file=require(`./data/ranking_${region[index]}.json`);
+    for (let i = 0; i< file.length; i++) {
+        
+        ranking_index[region[index]].push(i);
+        
+    }
+    
+}
+var car_washer_name={"서울특별시":[],"부산광역시":[],"대구광역시":[],"인천광역시":[],"울산광역시":[],"대전광역시":[]};
+const a=()=>{
+    for(let index=0;index<region.length;index++){
+        let file=require(`./data/ranking_${region[index]}.json`);
+        let file2=require(`./data/carwash_${region[index]}.json`);
+        rating[region[index]]=file;
+        // console.log(file2.length)
+        for(let i=0;i<file2.length;i++){
+            car_washer_name[region[index]].push(file2[i]["사업장명"]);
+        }
+    }
+}
+a()
+playAlert = setInterval(function() {
+    a()
+}, 3600000);
+
 app.get("/", (req, res) => {
     var shop_item = [
         { name: "a", price: "12,000", item_img: "/static/img/item/a.jpg", infor_img: "/static/img/Information/a.jpg" },
