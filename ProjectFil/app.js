@@ -1,7 +1,7 @@
 const express=require("express");
 const app=express();
 const path = require('path');
-const port=8000;
+const port=3000;
 
 // const file=require("/Users/song-giyeong/car_washer/carwash/carwash_data.json");
 
@@ -13,7 +13,7 @@ app.use("/data", express.static("data"))
 
 
 app.get("/",(req,res)=>{
-    res.render("template");
+    res.render("Home");
 })
 
 app.get("/club",(req,res)=>{
