@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Car Wash :: Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    #chat_btn {
+        position: fixed;
+        right: 50px;
+        bottom: 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .chat_btn {
+        display: none;
+    }
+
+    #chat_btn:hover {
+        cursor: pointer;
+    }
+
+    .close {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 35px;
+        top: -5px;
+        z-index: 1;
+        background-image: url("https://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/close.png");
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    #menu {
+        width: 350px;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        right: -352px;
+        z-index: 10;
+        border: 1px solid #c9c9c9;
+        background-color: white;
+        text-align: center;
+        transition: All 0.2s ease;
+        -webkit-transition: All 0.2s ease;
+        -moz-transition: All 0.2s ease;
+        -o-transition: All 0.2s ease;
+        overflow: scroll;
+    }
+
+    /* 메뉴 스크롤바 숨기기 */
+
+    #menu {
+        -ms-overflow-style: none;
+    }
+
+    #menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    #menu.open {
+        right: 0px;
+    }
+
+    .nav-item {
+        margin-right: 40px;
+    }
+
+    .card {
+        margin: auto;
+        text-align: center;
+    }
+
+    .card-body>a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    /* 동호회 리스트 및 페이지기능 */
+
+    /* a태그 파란밑줄 제거 및 글자색 변경 */
+    
+    .list-item > .remoteclubdetail {
+        text-decoration: none;
+        color: black;
+    }
+
+    .containerpage {
+        width: 100%;
+    }
+
+    .list-wrapper {
+        padding: 15px;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        margin: 0 auto;
+    }
+
+    .list-item {
+        border: 1px solid #eee;
+        background: #fff;
+        margin-bottom: 10px;
+        padding: 5px;
+        box-shadow: 0 0 10px 0 #eee;
+        width: 33.33333333333333%;
+        margin: 15px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .list-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .list-item .text {
+        text-align: center;
+    }
+
+    .text h3 {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+
+    .text p {
+        font-size: 18px;
+    }
+
+    .text .currentmember{
+        font-size: 15px;
+    }
+
+    .description {
+        position: absolute;
+        top: 0;
+        opacity: 0;
+        background: #000;
+        transition: all 1s ease;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        color: #fff;
+    }
+
+    .description .d-text {
+        padding: 15px;
+    }
+
+    .d-text h3 {
+        font-size: 24px;
+    }
+
+    .d-text p {
+        font-size: 16px;
+    }
+
+    .list-item:hover .description {
+        opacity: 1;
+    }
+
+    .simple-pagination ul {
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        margin-left: 10px;
+    }
+
+    .simple-pagination li {
+        display: inline-block;
+        margin: 2px;
+    }
+
+    .simple-pagination li a,
+    .simple-pagination li span {
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #fff;
+        text-align: center;
+
+        text-decoration: none;
+        color: #252525;
+        border-radius: 4px;
+        margin: 5px;
+        box-shadow: inset 0 5px 10px rgba(0, 0, 0, .1), 0 2px 5px rgba(0, 0, 0, .5);
+        transition: all 1s ease;
+    }
+
+    .simple-pagination li a:hover {
+        background: #000;
+        color: #fff;
+    }
+
+    .simple-pagination .current {
+        color: #fff;
+        background-color: #000;
+        border-color: rgb(255, 255, 255);
+        border: 1px solid;
+        cursor: pointer;
+    }
+
+    .simple-pagination .prev.current,
+    .simple-pagination .next.current {
+        background: #222;
+        border: none;
+    }
+
+    /* 동호회 목록 미디어쿼리 */
+    @media screen and (max-width:800px) {
+        .list-wrapper {
+            display: block;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .list-item {
+            width: 100%;
+            margin: auto;
+
+        }
+
+    }
+</style>
+
+<body>
+    
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark"
+        style="position: fixed; top: 0; left: 0; right: 0; z-index: 1;">
+        <a href="/" class="navbar-brand">Foambble Bobble</a>
+        <!-- Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav" style="margin:auto">
+                <li class="nav-item"><a href="/" class="nav-link">세차장 조회</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">상점</a></li>
+                <li class="nav-item"><a href="/club" class="nav-link">동호회</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- header -->
+    <div class="jumbotron text-center mb-0"
+        style="height: 500px; margin-top: 50px;">
+        <h1>
+            <a href="/" style="text-decoration: none; color: gray;">
+                Foambble Bobble Car Wash
+            </a>
+        </h1>
+        <p>전국 셀프세차인에게 유용한 정보들과 세차인들간의 커뮤니케이션을 위한 사이트</p>
+    </div>
+
+    <!-- <div class="container pt-3">
+        <div class="row">
+
+            <div class="card" style="width: 15rem;">
+                <img src="static/img/carwash_img1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">경기 북부 세차모임</h5>
+                    <p class="card-text">경기 북부에 거주하는 세차환자들의 모임</p>
+                    <a href="#" class="btn btn-dark">바로가기</a>
+                </div>
+            </div>
+
+            <div class="card" style="width: 15rem;">
+                <img src="static/img/carwash_img1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">세린스</h5>
+                    <p class="card-text">세린이들을 위해 만든 세차교육 동호회</p>
+                    <a href="#" class="btn btn-dark">바로가기</a>
+                </div>
+            </div>
+
+            <div class="card" style="width: 15rem;">
+                <img src="static/img/carwash_img1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">카워사우르스</h5>
+                    <p class="card-text">공룡처럼 덩치큰사람들이 모여 세차하는 모임</p>
+                    <a href="#" class="btn btn-dark">바로가기</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+    <div class="containerpage">
+        <div class="list-wrapper">
+
+            <div class="list-item"><a class="remoteclubdetail" href="clubdetail1">
+                <div class="content">
+                    <img src="static/img/carwash_img1.jpg" alt="">
+                    <div class="text">
+                        <h3>세린이즈</h3>
+                        <p>세린이들의 모임!</p>
+                        <p class="currentmember">현재 인원</p>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div class="d-text">
+                        <h3>내용입력</h3>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 40%">520명</div>
+                </div>
+            </a>
+            </div>
+
+
+            <div class="list-item">
+                <div class="content">
+                    <img src="static/img/carwash_img1.jpg" alt="">
+                    <div class="text">
+                        <h3>초보자</h3>
+                        <p>초보자들의 모임!</p>
+                        <p class="currentmember">현재 인원</p>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div class="d-text">
+                        <h3>내용입력</h3>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 75%">2050명</div>
+                </div>
+            </div>
+
+
+            <div class="list-item">
+                <div class="content">
+                    <img src="static/img/carwash_img1.jpg" alt="">
+                    <div class="text">
+                        <h3>서울세차</h3>
+                        <p>서울세차 모임!</p>
+                        <p class="currentmember">현재 인원</p>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div class="d-text">
+                        <h3>내용입력</h3>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 15%">10대</div>
+                </div>
+            </div>
+
+
+            <div class="list-item">
+                <div class="content">
+                    <img src="static/img/carwash_img2.jpg" alt="">
+                    <div class="text">
+                        <h3>의정부환자모여라</h3>
+                        <p>의정부 세차환자 모임!</p>
+                        <p class="currentmember">현재 인원</p>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div class="d-text">
+                        <h3>내용입력</h3>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 24%">405명</div>
+                </div>
+            </div>
+
+
+            <div class="list-item">
+                <div class="content">
+                    <img src="static/img/carwash_img2.jpg" alt="">
+                    <div class="text">
+                        <h3>어려운세차</h3>
+                        <p>어려운세차 모임!</p>
+                        <p class="currentmember">현재 인원</p>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div class="d-text">
+                        <h3>내용입력</h3>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 88%">6042명</div>
+                </div>
+            </div>
+
+
+            <div class="list-item">
+                <div class="content">
+                    <img src="static/img/carwash_img2.jpg" alt="">
+                    <div class="text">
+                        <h3>카워시스</h3>
+                        <p>세차 모임!</p>
+                        <p class="currentmember">현재 인원</p>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div class="d-text">
+                        <h3>내용입력</h3>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 55%">2500명</div>
+                </div>
+            </div>
+
+            <div class="list-item">
+                <div class="content">
+                    <img src="static/img/carwash_img3.jpg" alt="">
+                    <div class="text">
+                        <h3>차차차</h3>
+                        <p>차가좋아 모임!</p>
+                        <p class="currentmember">현재 인원</p>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div class="d-text">
+                        <h3>내용입력</h3>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 85%">9230명</div>
+                </div>
+            </div>
+
+
+            <div class="list-item">
+                <div class="content">
+                    <img src="static/img/carwash_img3.jpg" alt="">
+                    <div class="text">
+                        <h3>차버블</h3>
+                        <p>버블버블 모임!</p>
+                        <p class="currentmember">현재 인원</p>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div class="d-text">
+                        <h3>내용입력</h3>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 15%">30명</div>
+                </div>
+            </div>
+
+
+
+            <div class="list-item">
+                <div class="content">
+                    <img src="static/img/carwash_img3.jpg" alt="">
+                    <div class="text">
+                        <h3>폼블스</h3>
+                        <p>폼블폼블 모임!</p>
+                        <p class="currentmember">현재 인원</p>
+                    </div>
+                </div>
+
+                <div class="description">
+                    <div class="d-text">
+                        <h3>내용입력</h3>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <h4>내용입력</h4>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                        <p>내용입력</p>
+                    </div>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                        style="width: 45%">250명</div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <div id="pagination-container"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    </div>
+    <div id="menu">
+        <div class="close"></div>
+        <div class="container">
+            <img id="chat_btn" src="/static/img/chatimg.png" alt="">
+            <iframe id="chat" src="https://service.dongledongle.com/carwashchat" frameborder="0" width="100%"
+                height="900vh"></iframe>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- footer -->
+    <div class="jumbotron text-center mt-5 mb-0">
+        <h3 class="text-secondary">Foambble Bobble</h3>
+        <p>Foambble Bobble Homepage is Designed by <span class="text-primary">6 group</span></p>
+    </div>
+
+
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
+
+    <!-- --------------------------------------------------------------------------------------------------------------->
+    <script>
+        // 버튼 클릭시 우측에서 슬라이드 나오면서 버튼은 사라짐
+        $("#chat_btn").click(function () {
+            $("#menu").addClass("open");
+            $("#chat_btn").addClass("chat_btn");
+
+        });
+        // X버튼 클릭시 슬라이드 들어가면서 버튼은 생성됨
+        $(".close").click(function () {
+            $("#menu").removeClass("open");
+            $("#chat_btn").removeClass("chat_btn");
+        });
+
+
+
+        // 동호회 페이지 기능
+        let items = $('.list-wrapper .list-item');
+        let numItems = items.length;
+        let perPage = 3;
+
+        items.slice(perPage).hide();
+
+        $('#pagination-container').pagination({
+            items: numItems,
+            itemsOnPage: perPage,
+            prevText: "<",
+            nextText: ">",
+            onPageClick: function (pageNumber) {
+                let showFrom = perPage * (pageNumber - 1);
+                let showTo = showFrom + perPage;
+                items.hide().slice(showFrom, showTo).show();
+            }
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

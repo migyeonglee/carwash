@@ -35,7 +35,17 @@ app.get("/shop_item", (req, res) => {
     res.render("shop_item", { data: data });
 });
 
-// server open
-app.listen(port, () => {
-    console.log("server open : ", port);
-});
+
+app.get("/club",(req,res)=>{
+    res.render("club");
+})
+
+app.get("/clubdetail1",(req,res)=>{
+    res.render("clubdetail1");
+})
+
+app.listen(port,()=>{
+    console.log("server open: ",port);
+
+})
+
