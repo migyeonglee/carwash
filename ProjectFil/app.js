@@ -35,7 +35,12 @@ playAlert = setInterval(function() {
     a()
 }, 3600000);
 
-app.get("/", (req, res) => {
+
+app.get("/",(req,res)=>{
+    res.render("Home");
+})
+
+app.get("/shop", (req, res) => {
     var shop_item = [
         { name: "a", price: "12,000", item_img: "/static/img/item/a.jpg", infor_img: "/static/img/Information/a.jpg" },
         { name: "b", price: "13,000", item_img: "/static/img/item/b.jpg", infor_img: "/static/img/Information/b.jpg" },
@@ -69,6 +74,8 @@ app.get("/ranking", (req, res) => {
     // console.log(car_washer_name);
     res.render("ranking",{region:region,rating:rating,car_washer_name:car_washer_name,ranking_index:ranking_index});
 })
+
+
 
 app.get("/club",(req,res)=>{
     res.render("club");
