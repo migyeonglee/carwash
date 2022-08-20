@@ -35,6 +35,11 @@ app.get("/shop_item", (req, res) => {
     res.render("shop_item", { data: data });
 });
 
+app.get("/ranking", (req, res) => {
+    console.log(ranking_index);
+    // console.log(car_washer_name);
+    res.render("ranking",{region:region,rating:rating,car_washer_name:car_washer_name,ranking_index:ranking_index});
+})
 
 app.get("/club",(req,res)=>{
     res.render("club");
