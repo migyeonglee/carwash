@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Car Wash :: Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/79ec480f66.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+    @font-face {
+        font-family: 'NEXON Lv1 Gothic OTF';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    * {
+        font-family: "NEXON Lv1 Gothic OTF";
+    }
+
+    .make_center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: "Helvetica";
+    }
+
+    #chat_btn {
+        position: fixed;
+        right: 50px;
+        bottom: 50px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .chat_btn {
+        display: none;
+    }
+
+    #chat_btn:hover {
+        cursor: pointer;
+    }
+
+    .close {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 35px;
+        top: -5px;
+        z-index: 1;
+        background-image: url("https://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/close.png");
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    #menu {
+        width: 350px;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        right: -352px;
+        z-index: 10;
+        border: 1px solid #c9c9c9;
+        background-color: white;
+        text-align: center;
+        transition: All 0.2s ease;
+        -webkit-transition: All 0.2s ease;
+        -moz-transition: All 0.2s ease;
+        -o-transition: All 0.2s ease;
+    }
+
+    #menu.open {
+        right: 0px;
+    }
+
+
+
+
+    @media (min-width: 768px) {
+        .container {
+            width: 750px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .container {
+            width: 940px;
+        }
+    }
+
+    /*사실 이 블럭은 없어도 된다*/
+    @media (min-width: 1200px) {
+        .container {
+            width: 1200px;
+        }
+    }
+
+
+    .w-btn {
+        position: relative;
+        border: none;
+        display: inline-block;
+        padding: 15px 30px;
+        box-shadow: 0px 0px 5px gray;
+        border-radius: 5px;
+        font-family: "paybooc-Light", sans-serif;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.25s;
+    }
+
+    .w-btn:hover {
+        background-color: gray;
+        color: white;
+    }
+
+    .w-btn-indigo {
+        background-color: gainsboro;
+        color: black;
+    }
+
+
+
+</style>
+
+<body>
+    <!-- header -->
+    <script>
+        let selected_val = $('#sel option:selected').val();
+    </script>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a href="/" class="navbar-brand">Foambble Bobble</a>
+        <!-- Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="#" class="nav-link">공지사항</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">갤러리</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">앨범</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="page_name">
+        <div style="margin-top: 20px; margin-left:20px;">
+            <h2>세차장 검색</h2>
+        </div>
+    </div>
+    <hr>
+    <!-- content -->
+    <div class="container pt-3">
+        
+            
+    </div>
+    <!-- footer -->
+    <div class="jumbotron text-center mt-5 mb-0">
+        <h3 class="text-secondary">Foambble Bobble</h3>
+        <p>Foambble Bobble Homepage is Designed by <span class="text-primary">6 group</span></p>
+    </div>
+
+
+    <div id="menu">
+        <div class="close"></div>
+        <div class="container">
+            <img id="chat_btn" src="/static/img/chatimg.png" alt="">
+            <iframe id="chat" src="https://service.dongledongle.com/carwashchat" frameborder="0" width="100%"
+                height="900vh"></iframe>
+        </div>
+    </div>
+
+
+
+                <!-- --------------------------------------------------------------------------------------------------------------->
+                <script>
+                    
+                    $("#chat_btn").click(function () {
+                        $("#menu").addClass("open");
+                        $("#chat_btn").addClass("chat_btn");
+
+                    });
+                    // X버튼 클릭시 슬라이드 들어가면서 버튼은 생성됨
+                    $(".close").click(function () {
+                        $("#menu").removeClass("open");
+                        $("#chat_btn").removeClass("chat_btn");
+                    });
+        //값선택
+                </script>
+
+</body>
+
+</html>
