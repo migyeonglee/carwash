@@ -27,7 +27,11 @@
     * {
         font-family: "NEXON Lv1 Gothic OTF";
     }
-
+    .table_div {
+        max-height: 500px;
+        overflow-y: scroll;
+        width: 100%;
+    }
     .make_center {
         display: flex;
         align-items: center;
@@ -132,8 +136,88 @@
         color: black;
     }
 
+    .search_body_div {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px gray;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 
+    .table_nav_bar {
+        width: 100%;
+        height: 100px;
 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .table_bar {
+        position: relative;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px gray;
+        background-color: gray;
+        color: white
+    }
+
+    .select_bar {
+        display: flex;
+        width: 100%;
+    }
+
+    .select_bar1 {
+        width: 100%;
+        border: 0;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px gray;
+        margin-bottom: 10px
+    }
+
+    .select_local {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        font-size: large;
+        margin-bottom: 10px;
+    }
+    @media screen and (min-width: 990px) {
+        .table_bar div {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px gray;
+            background-color: gray;
+            color: white;
+            font-size: 20px;
+        }
+    }
+
+    @media screen and (max-width: 990px) {
+        .table_bar div {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px gray;
+            background-color: gray;
+            color: white;
+            font-size: 15px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .table_bar div {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px gray;
+            background-color: gray;
+            color: white;
+            font-size: xx-small;
+        }
+    }
 </style>
 
 <body>
@@ -163,8 +247,71 @@
     <hr>
     <!-- content -->
     <div class="container pt-3">
-        
-            
+        <div class="search_body_div">
+            <div class="select_bar">
+                <div class="select_local">
+                    지역 선택
+                </div>
+                <select id="sel" class="form-select select_bar1" aria-label="Default select example">
+                    <option selected>시</option>
+                    <% for (var i=0; i<region.length; i++) { %>
+                        <option value="<%=region[i]%>">
+                            <%=region[i]%>
+                        </option>
+                        <% } %>
+                </select>
+                <select id="sel" class="form-select select_bar1" aria-label="Default select example">
+                    <option selected>구</option>
+
+                </select>
+            </div>
+            <div class="row table_bar">
+                <div class="col-2" style="position:reletive; ">
+                    인덱스
+                </div>
+                <div class="col-3" style="position:reletive; ">
+                    이름
+                </div>
+                <div class="col-5" style="position:reletive; ">
+                    지역
+                </div>
+                <div class="col-2" style="position:reletive; ">
+                    디테일
+                </div>
+            </div>
+            <div class="table_div" style="position: reletive;">
+                <table class="table table-striped table-hover">
+                    <tbody class="app_sel">
+                        <tr>
+                            <th style="width:10%; text-align:center" scope="row" >
+                                1
+                            </th>
+                            <td style="width:50% ;">
+                                그린셀프세차장
+                            </td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="table_nav_bar">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link">이전</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" style="color: gray;">다음</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
     <!-- footer -->
     <div class="jumbotron text-center mt-5 mb-0">
@@ -184,21 +331,21 @@
 
 
 
-                <!-- --------------------------------------------------------------------------------------------------------------->
-                <script>
-                    
-                    $("#chat_btn").click(function () {
-                        $("#menu").addClass("open");
-                        $("#chat_btn").addClass("chat_btn");
+    <!-- --------------------------------------------------------------------------------------------------------------->
+    <script>
 
-                    });
-                    // X버튼 클릭시 슬라이드 들어가면서 버튼은 생성됨
-                    $(".close").click(function () {
-                        $("#menu").removeClass("open");
-                        $("#chat_btn").removeClass("chat_btn");
-                    });
+        $("#chat_btn").click(function () {
+            $("#menu").addClass("open");
+            $("#chat_btn").addClass("chat_btn");
+
+        });
+        // X버튼 클릭시 슬라이드 들어가면서 버튼은 생성됨
+        $(".close").click(function () {
+            $("#menu").removeClass("open");
+            $("#chat_btn").removeClass("chat_btn");
+        });
         //값선택
-                </script>
+    </script>
 
 </body>
 
