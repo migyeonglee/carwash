@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -16,7 +17,7 @@
 
 <style>
     @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
     @font-face {
         font-family: 'NEXON Lv1 Gothic OTF';
         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
@@ -27,11 +28,13 @@
     * {
         font-family: "NEXON Lv1 Gothic OTF";
     }
+
     .table_div {
         max-height: 500px;
         overflow-y: scroll;
         width: 100%;
     }
+
     .make_center {
         display: flex;
         align-items: center;
@@ -139,7 +142,7 @@
     .search_body_div {
         position: relative;
         width: 100%;
-        height: 600px;
+        height: 617px;
         border-radius: 5px;
         box-shadow: 0px 0px 5px gray;
         display: flex;
@@ -175,7 +178,7 @@
         border: 0;
         border-radius: 5px;
         box-shadow: 0px 0px 5px gray;
-        margin-bottom: 10px
+        margin-bottom: 30px;
     }
 
     .select_local {
@@ -184,7 +187,13 @@
         align-items: center;
         width: 40%;
         font-size: large;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
+    }
+
+    .trans_div{
+        width: 100%;
+        height: 100px;
+        opacity: 0.5;
     }
     @media screen and (min-width: 990px) {
         .table_bar div {
@@ -193,6 +202,14 @@
             box-shadow: 0px 0px 5px gray;
             background-color: gray;
             color: white;
+            font-size: 20px;
+        }
+
+        td {
+            font-size: 20px;
+        }
+
+        th {
             font-size: 20px;
         }
     }
@@ -206,6 +223,17 @@
             color: white;
             font-size: 15px;
         }
+
+        td {
+            font-size: 15px;
+        }
+
+        th {
+            font-size: 15px;
+        }
+        .detailTable *{
+            font-size: 15px;
+        }
     }
 
     @media screen and (max-width: 768px) {
@@ -217,6 +245,124 @@
             color: white;
             font-size: xx-small;
         }
+
+        td {
+            font-size: 5px;
+        }
+
+        th {
+            font-size: 5px;
+        }
+        .detailTable *{
+            font-size: 5px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .table_bar div {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px gray;
+            background-color: gray;
+            color: white;
+            font-size: xx-small;
+        }
+
+        td {
+            font-size: 5px;
+        }
+
+        th {
+            font-size: 5px;
+        }
+        .detailTable *{
+            font-size: 5px;
+        }
+    }
+
+    @media screen and (max-width: 300px) {
+
+
+        * {
+            display: none;
+        }
+    }
+
+    .line {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    .DetailPage {
+        height: 0;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        color: white;
+    }
+    #id {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .detailBtn:hover {
+        cursor: pointer;
+    }
+
+    .detailDiv1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 60%;
+        height: 100%;
+    }
+
+    .detailDiv2 {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 40%;
+        height: 100%;
+
+    }
+    .contentDiv{
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+    }
+    .detailTable{
+        width: 80%;
+        height: 70%;
+        box-shadow: 0px 0px 5px gray;
+        border-radius: 10px;
+    }
+    .small_div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 1px 1px 0px 0px gray;
+
+    }
+    .small_div1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 1px 0px 0px 0px gray;
+
+    }
+    .small_div2{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 1px 0px 0px gray;
+
     }
 </style>
 
@@ -247,12 +393,13 @@
     <hr>
     <!-- content -->
     <div class="container pt-3">
-        <div class="search_body_div">
+        <div>
             <div class="select_bar">
                 <div class="select_local">
                     지역 선택
                 </div>
-                <select id="sel" class="form-select select_bar1" aria-label="Default select example">
+                <select id="sel" class="form-select select_bar1" aria-label="Default select example"
+                    style="margin-right:20px">
                     <option selected>시</option>
                     <% for (var i=0; i<region.length; i++) { %>
                         <option value="<%=region[i]%>">
@@ -265,36 +412,25 @@
 
                 </select>
             </div>
-            <div class="row table_bar">
-                <div class="col-2" style="position:reletive; ">
+        </div>
+        <div class="search_body_div">
+            <div class="table_bar" style="display: flex;">
+                <div style="position:reletive; width:10%;text-align:center">
                     인덱스
                 </div>
-                <div class="col-3" style="position:reletive; ">
+                <div style="position:reletive; width:30%;text-align:center ">
                     이름
                 </div>
-                <div class="col-5" style="position:reletive; ">
+                <div style="position:reletive;text-align:center ;width:40%">
                     지역
                 </div>
-                <div class="col-2" style="position:reletive; ">
+                <div style="position:reletive;text-align:center; width:20% ">
                     디테일
                 </div>
             </div>
-            <div class="table_div" style="position: reletive;">
-                <table class="table table-striped table-hover">
-                    <tbody class="app_sel">
-                        <tr>
-                            <th style="width:10%; text-align:center" scope="row" >
-                                1
-                            </th>
-                            <td style="width:50% ;">
-                                그린셀프세차장
-                            </td>
-                            <td>0</td>
-                            <td>0</td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
+            <div class="select_text" style="position: absolute; top:50%;"> 지역을 선택해 주세요</div>
+            <div id="table" style="width: 100%; overflow-y:scroll;">
+
             </div>
         </div>
         <div class="table_nav_bar">
@@ -303,9 +439,9 @@
                     <li class="page-item disabled">
                         <a class="page-link">이전</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#1" onclick="onClickPage()">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#2" onclick="onClickPage()">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#3" onclick="onClickPage()">3</a></li>
                     <li class="page-item">
                         <a class="page-link" href="#" style="color: gray;">다음</a>
                     </li>
@@ -318,7 +454,7 @@
         <h3 class="text-secondary">Foambble Bobble</h3>
         <p>Foambble Bobble Homepage is Designed by <span class="text-primary">6 group</span></p>
     </div>
-
+    
 
     <div id="menu">
         <div class="close"></div>
@@ -333,6 +469,297 @@
 
     <!-- --------------------------------------------------------------------------------------------------------------->
     <script>
+        var car_washer_name = <%-JSON.stringify(car_washer_name) %>;
+        var ranking_index =<%-JSON.stringify(ranking_index) %>;
+        var rating =<%-JSON.stringify(rating) %>;
+
+        const onChangeLocal = (local, index) => {
+            let html = ``;
+            console.log(((index - 1) * 11) + 11);
+            console.log(ranking_index[local].length)
+            if (((index - 1) * 11) + 11 >= ranking_index[local].length) {
+                for (let i = (index - 1) * 11; i < ranking_index[local].length; i++) {
+                    if (i % 2 == 0) {
+                        html += `<div class="line" style="background-color: #e8e8e8;">
+                            <div style="position:reletive; width:10%;text-align:center">
+                                ${i}
+                            </div>
+                            <div style="position:reletive; width:30%;text-align:center ">
+                                ${car_washer_name[local][i]["사업장명"]}
+                            </div>
+                            <div style="position:reletive;text-align:center ;width:40%">
+                                ${car_washer_name[local][i]["시도명"] + " " + car_washer_name[local][i]["시군구명"]}
+                            </div>
+                            <div style="position:reletive;text-align:center; width:20% ">
+                                ${"+"}
+                            </div>
+                    </div>
+                    <div class="DetailPage" style="background-color: #e8e8e8;">
+                        <div class="detailDiv1">
+                            <div class="contentDiv" style="margin-bottom:15px;height:10%">
+                                <h5>info</h5>
+                            </div>
+                            <div class="detailTable">
+                                <div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div" style="width: 30%;">소재지 도로명 주소</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["소재지도로명주소"]}</div>
+                                </div>
+                                <div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div" style="width: 30%;">세차장 전화번호</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["세차장전화번호"]}</div>
+                                </div><div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div" style="width: 30%;">수질 허가번호</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["수질허가번호"]}</div>
+                                </div><div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div" style="width: 30%;">위도</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["WGS84위도"]}</div>
+                                </div><div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div1" style="width: 30%;">경도</div>
+                                    <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["WGS84경도"]}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detailDiv2">
+                            <div class="detailTable" style="margin-bottom:15px;height:10%">
+                                <h5>info</h5>
+                            </div>
+                            <div class="contentDiv">
+                                <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
+                            </div>
+                            <div class="contentDiv">
+                                <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
+                            </div>
+                        </div>
+                    </div>`
+                    }
+                    else {
+                        html += `<div class="line" style="background-color: white;">
+                            <div style="position:reletive; width:10%;text-align:center">
+                                ${i}
+                            </div>
+                            <div style="position:reletive; width:30%;text-align:center ">
+                                ${car_washer_name[local][i]["사업장명"]}
+                            </div>
+                            <div style="position:reletive;text-align:center ;width:40%">
+                                ${car_washer_name[local][i]["시도명"] + " " + car_washer_name[local][i]["시군구명"]}
+                            </div>
+                            <div style="position:reletive;text-align:center; width:20% ">
+                                ${"+"}
+                            </div>
+                    </div>
+                    <div class="DetailPage" style="background-color: #e8e8e8;">
+                        <div class="detailDiv1">
+                            <div class="contentDiv" style="margin-bottom:15px;height:10%">
+                                <h5>info</h5>
+                            </div>
+                            <div class="detailTable">
+                                <div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div" style="width: 30%;">소재지 도로명 주소</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["소재지도로명주소"]}</div>
+                                </div>
+                                <div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div" style="width: 30%;">세차장 전화번호</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["세차장전화번호"]}</div>
+                                </div><div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div" style="width: 30%;">수질 허가번호</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["수질허가번호"]}</div>
+                                </div><div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div" style="width: 30%;">위도</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["WGS84위도"]}</div>
+                                </div><div style="height:20%;width:100%;display:flex;">
+                                    <div class="small_div1" style="width: 30%;">경도</div>
+                                    <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["WGS84경도"]}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detailDiv2">
+                            <div class="detailTable" style="margin-bottom:15px;height:10%">
+                                <h5>info</h5>
+                            </div>
+                            <div class="contentDiv">
+                                <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
+                            </div>
+                            <div class="contentDiv">
+                                <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
+                            </div>
+                        </div>
+                    </div>`
+                    }
+                }
+            }
+            else {
+                for (let i = (index - 1) * 11; i < ((index - 1) * 11) + 11; i++) {
+                    if (i % 2 == 0) {
+                        html += `<div class="line" style="background-color: #e8e8e8;">
+                            <div style="position:reletive; width:10%;text-align:center">
+                                ${i}
+                            </div>
+                            <div style="position:reletive; width:30%;text-align:center ">
+                                ${car_washer_name[local][i]["사업장명"]}
+                            </div>
+                            <div style="position:reletive;text-align:center ;width:40%">
+                                ${car_washer_name[local][i]["시도명"] + " " + car_washer_name[local][i]["시군구명"]}
+                            </div>
+                            <div class="detailBtn" style="position:reletive;text-align:center; width:20% " onclick="onClickDetail(this)">+</div>                            
+                        </div>
+                        <div class="DetailPage" style="background-color: #e8e8e8;">
+                            <div class="detailDiv1">
+                                <div class="contentDiv" style="margin-bottom:15px;height:10%">
+                                    <h5>info</h5>
+                                </div>
+                                <div class="detailTable">
+                                    <div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div" style="width: 30%;">소재지 도로명 주소</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["소재지도로명주소"]}</div>
+                                    </div>
+                                    <div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div" style="width: 30%;">세차장 전화번호</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["세차장전화번호"]}</div>
+                                    </div><div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div" style="width: 30%;">수질 허가번호</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["수질허가번호"]}</div>
+                                    </div><div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div" style="width: 30%;">위도</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["WGS84위도"]}</div>
+                                    </div><div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div1" style="width: 30%;">경도</div>
+                                        <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["WGS84경도"]}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detailDiv2">
+                                <div class="contentDiv" style="margin-bottom:15px">
+                                    <h5>rate</h5>
+                                </div>
+                                <div class="contentDiv">
+                                    <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
+                                </div>
+                                <div class="contentDiv">
+                                    <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
+                                </div>
+                            </div>
+                        </div>`
+                    }
+                    else {
+                        html += `<div class="line" style="background-color: white;">
+                            <div style="position:reletive; width:10%;text-align:center">
+                                ${i}
+                            </div>
+                            <div style="position:reletive; width:30%;text-align:center ">
+                                ${car_washer_name[local][i]["사업장명"]}
+                            </div>
+                            <div style="position:reletive;text-align:center ;width:40%">
+                                ${car_washer_name[local][i]["시도명"] + " " + car_washer_name[local][i]["시군구명"]}
+                            </div>
+                            <div class="detailBtn" style="position:reletive;text-align:center; width:20% " onclick="onClickDetail(this)">
+                                ${"+"}
+                            </div>  
+                        </div>
+                        <div class="DetailPage" style="background-color: white;">
+                            <div class="detailDiv1">
+                                <div class="contentDiv" style="margin-bottom:15px;height:10%">
+                                    <h5>info</h5>
+                                </div>
+                                <div class="detailTable">
+                                    <div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div" style="width: 30%;">소재지 도로명 주소</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["소재지도로명주소"]}</div>
+                                    </div>
+                                    <div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div" style="width: 30%;">세차장 전화번호</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["세차장전화번호"]}</div>
+                                    </div><div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div" style="width: 30%;">수질 허가번호</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["수질허가번호"]}</div>
+                                    </div><div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div" style="width: 30%;">위도</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["WGS84위도"]}</div>
+                                    </div><div style="height:20%;width:100%;display:flex;">
+                                        <div class="small_div1" style="width: 30%;">경도</div>
+                                        <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["WGS84경도"]}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="detailDiv2">
+                                <div class="contentDiv" style="margin-bottom:15px">
+                                    <h5>rate</h5>
+                                </div>
+                                <div class="contentDiv">
+                                    <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
+                                </div>
+                                <div class="contentDiv">
+                                    <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
+                                </div>
+                            </div>
+                        </div>`
+                    }
+                }
+
+            }
+            $("#table").html(html);
+        }
+
+        $("#sel").change(function () {
+            let setPageCount = 0;
+            let html = `<li class="page-item disabled">
+                <a class="page-link">이전</a>
+            </li>`;
+            let local = $(this).val();
+            if (car_washer_name[local].length % 11 == 0) {
+                setPageCount = parseInt(ranking_index[local].length / 11);
+            }
+            else {
+                setPageCount = parseInt(ranking_index[local].length / 11) + 1;
+            }
+            for (let i = 1; i <= setPageCount; i++) {
+                html += `
+                <li class="page-item"><a class="page-link" href="#${i}" onclick="onClickPage()">${i}</a></li>`
+
+            }
+            //console.log(setPageCount);
+            html += `<li class="page-item">
+                <a class="page-link" href="#" style="color: gray;">다음</a>
+            </li>`
+            $(".pagination").html(html);
+            let pathname = $(location).attr('hash');
+            let index = 1;
+            //console.log(index);
+            onChangeLocal(local, index);
+
+            $(".select_text").css({
+                "display": "none"
+            })
+
+        })
+        const onClickPage = () => {
+            setTimeout(() => {
+                let pathname = $(location).attr('hash');
+                let local = $("#sel").val();
+                let index = Number(String(pathname)[1]);
+                if (local != "시") {
+                    onChangeLocal(local, index);
+                }
+            })
+        }
+
+        const onClickDetail = (obj) => {
+            if ($(obj).text() === "+") {
+                $(obj).text("-")
+                console.log($(obj).text());
+                $(obj).parent().next().css({
+                    "height": "300px",
+                    "transition": "0.5s"
+                })
+            }
+            else {
+                $(obj).text("+")
+                $(obj).parent().next().css({
+                    "height": "0",
+                    "transition": "0.5s"
+                })
+            }
+            console.log("click");
+        }
 
         $("#chat_btn").click(function () {
             $("#menu").addClass("open");

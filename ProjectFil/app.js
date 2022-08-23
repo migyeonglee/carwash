@@ -6,37 +6,10 @@ app.use('/static', express.static('static'));
 app.use("/data", express.static("data"))
 //server port Number
 const port = 3000;
-let ranking_index={"서울특별시":[],"부산광역시":[],"대구광역시":[],"인천광역시":[],"울산광역시":[],"대전광역시":[]}
-let rating={};
-var region = ["서울특별시","부산광역시","대구광역시","인천광역시","울산광역시","대전광역시"];
-for (let index = 0; index < region.length; index++) {
-    let file=require(`./data/ranking_${region[index]}.json`);
-    for (let i = 0; i< file.length; i++) {
-        
-        ranking_index[region[index]].push(i);
-        
-    }
-    
-}
-var car_washer_name={"서울특별시":[],"부산광역시":[],"대구광역시":[],"인천광역시":[],"울산광역시":[],"대전광역시":[]};
-const a=()=>{
-    for(let index=0;index<region.length;index++){
-        let file=require(`./data/ranking_${region[index]}.json`);
-        let file2=require(`./data/carwash_${region[index]}.json`);
-        rating[region[index]]=file;
-        // console.log(file2.length)
-        for(let i=0;i<file2.length;i++){
-            car_washer_name[region[index]].push(file2[i]);
-        }
-    }
-}
-a()
-playAlert = setInterval(function() {
-    a()
-}, 3600000);
+var region = ["서울특별시", "부산광역시", "대구광역시", "인천광역시", "울산광역시", "대전광역시"];
 
+app.get("/", (req, res) => {
 
-app.get("/",(req,res)=>{
     res.render("Home");
 })
 
@@ -70,28 +43,70 @@ app.get("/shop_item", (req, res) => {
 });
 
 app.get("/ranking", (req, res) => {
+    let ranking_index = { "서울특별시": [], "부산광역시": [], "대구광역시": [], "인천광역시": [], "울산광역시": [], "대전광역시": [] }
+    let rating = {};
+    for (let index = 0; index < region.length; index++) {
+        let file = require(`./data/ranking_${region[index]}.json`);
+        for (let i = 0; i < file.length; i++) {
+
+            ranking_index[region[index]].push(i);
+
+        }
+
+    }
+    var car_washer_name = { "서울특별시": [], "부산광역시": [], "대구광역시": [], "인천광역시": [], "울산광역시": [], "대전광역시": [] };
+    for (let index = 0; index < region.length; index++) {
+        let file = require(`./data/ranking_${region[index]}.json`);
+        let file2 = require(`./data/carwash_${region[index]}.json`);
+        rating[region[index]] = file;
+        // console.log(file2.length)
+        for (let i = 0; i < file2.length; i++) {
+            car_washer_name[region[index]].push(file2[i]);
+        }
+    }
     console.log(ranking_index);
+
     // console.log(car_washer_name);
-    res.render("ranking",{region:region,rating:rating,car_washer_name:car_washer_name,ranking_index:ranking_index});
+    res.render("ranking", { region: region, rating: rating, car_washer_name: car_washer_name, ranking_index: ranking_index });
 })
 
-
-
-app.get("/club",(req,res)=>{
+app.get("/club", (req, res) => {
     res.render("club");
 })
 
-app.get("/clubdetail1",(req,res)=>{
+app.get("/clubdetail1", (req, res) => {
     res.render("clubdetail1");
 })
 
-app.get("/search",(req,res)=>{
-    res.render("search",{region:region,rating:rating,car_washer_name:car_washer_name,ranking_index:ranking_index});
+app.get("/search", (req, res) => {
+    let ranking_index = { "서울특별시": [], "부산광역시": [], "대구광역시": [], "인천광역시": [], "울산광역시": [], "대전광역시": [] }
+    let rating = {};
+    for (let index = 0; index < region.length; index++) {
+        let file = require(`./data/ranking_${region[index]}.json`);
+        for (let i = 0; i < file.length; i++) {
+
+            ranking_index[region[index]].push(i);
+
+        }
+
+    }
+    var car_washer_name = { "서울특별시": [], "부산광역시": [], "대구광역시": [], "인천광역시": [], "울산광역시": [], "대전광역시": [] };
+    for (let index = 0; index < region.length; index++) {
+        let file = require(`./data/ranking_${region[index]}.json`);
+        let file2 = require(`./data/carwash_${region[index]}.json`);
+        rating[region[index]] = file;
+        // console.log(file2.length)
+        for (let i = 0; i < file2.length; i++) {
+            car_washer_name[region[index]].push(file2[i]);
+        }
+    }
+    //console.log(rating);
+    res.render("search", { region: region, rating: rating, car_washer_name: car_washer_name, ranking_index: ranking_index });
 })
 
 
-app.listen(port,()=>{
-    console.log("server open: ",port);
+app.listen(port, () => {
+    console.log("server open: ", port);
 
 })
 
