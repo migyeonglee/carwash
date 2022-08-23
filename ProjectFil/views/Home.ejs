@@ -94,14 +94,23 @@
     }
 
     .mainname {
-        font-size: 15px;
+        font-size: 20px;
         color: gray;
         margin: 0;
         text-align: center;
+        margin-top: 10px;
+        line-height: 1.14286;
+        font-weight: 600;
+        letter-spacing: .007em;
     }
 
     .subname {
         text-align: center;
+        font-size: 25px;
+        line-height: 1.14286;
+        font-weight: 600;
+        letter-spacing: .007em;
+        margin-top: 10px;
     }
 
     .middlelogo {
@@ -111,17 +120,50 @@
 
     .functioninfo {
         cursor: pointer;
+        width: 100%;
+        height: 300px;
+        border-radius: 20%;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 0, 0.644);
     }
 
     .functioninfo:hover {
-        opacity: 0.5;
+        /* opacity: 0.5; */
         -webkit-transition: .3s ease-in-out;
         transition: .3s ease-in-out;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        transform: translateY(-10px);
     }
 
     .middlelogoimg {
         width: 80px;
         margin-bottom: 20px;
+    }
+
+
+    /* 기능 목록 미디어쿼리 */
+    @media screen and (max-width:800px) {
+        .cardmoim {
+            display: block;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .col-6 {
+            width: 100%;
+            margin: auto;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+    }
+
+    @media screen and (max-width:500px) {
+        .col-6 {
+            width: 100%;
+            margin: auto;
+            border-radius: 10px;
+            max-width: 100%;
+        }
     }
 </style>
 
@@ -147,48 +189,50 @@
             rgba(0, 0, 0, 0.486),
             rgba(0, 0, 0, 0.664)
           ),url(static/img/washgif2.gif); background-size:cover; background-position:right 35% bottom 75%; margin-top: 50px;">
-        <h1 style="margin-top: 200px; text-align: left; color: white; font-size: 30px; font-weight: bold;">사람을 움직이는 수단에서</h1>
+        <h1 style="margin-top: 200px; text-align: left; color: white; font-size: 30px; font-weight: bold;">사람을 움직이는 수단에서
+        </h1>
         <h1 style="text-align: left; color: white; font-size: 30px; font-weight: bold;">마음을 정화하는 공간으로</h1><br>
         <p style="text-align: left; color: white; font-size: 15px; font-weight: bold;">세차라는 간단한 방법을 통해<br>
             내 첫인상을 바꿔보세요</p>
     </div>
-<div class="container">
-    <div style="margin-top: 20px;" class="container overflow-hidden">
-        <div class="middlelogo"><img class="middlelogoimg" src="static/img/informationicon.png" alt="">
-            <p style="font-size: 40px; text-shadow: 4px 4px 0px gray; font-weight: bold; color:rgba(255, 255, 0, 0.815);">유용한 기능</p>
-        </div>
-        <div class="row gy-5">
-            <div class="col-6">
-                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%; height: 300px;"
-                        src="static/img/searchimg.jpg" alt=""></div>
-                <p class="mainname">검색 > 세차장
-                <p class="subname">전국 세차장 검색하기</p>
-                </p>
+    <div class="container">
+        <div style="margin-top: 20px;" class="container overflow-hidden">
+            <div class="middlelogo"><img class="middlelogoimg" src="static/img/informationicon.png" alt="">
+                <p
+                    style="font-size: 40px; text-shadow: 4px 4px 0px gray; font-weight: bold; color:rgba(255, 255, 0, 0.815);">
+                    유용한 기능</p>
             </div>
-            <div class="col-6">
-                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%; height: 300px;"
-                        src="static/img/rankingimg.jpg" alt=""></div>
-                <p class="mainname">조회 > 랭킹
-                <p class="subname">전국 세차장 랭킹 조회하기</p>
-                </p>
-            </div>
-            <div class="col-6">
-                <div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%; height: 300px;"
-                        src="static/img/shopimg.jpg" alt=""></div>
-                <p class="mainname">구매 > 상점
-                <p class="subname">세차용품 구매하기</p>
-                </p>
-            </div>
-            <div class="col-6">
-                <a href="/club"><div class="p-0 border bg-light"><img class="functioninfo" style="width: 100%; height: 300px;"
-                        src="static/img/clubimg.png" alt=""></div></a>
-                <p class="mainname">조회 > 동호회
-                <p class="subname">전국 세차 동호회 조회하기</p>
-                </p>
+            <div class="row gy-5 cardmoim">
+                <div class="col-6">
+                    <div class="p-0 border:none"><img class="functioninfo" src="static/img/searchimg.jpg" alt=""></div>
+                    <p class="mainname">검색 > 세차장
+                    <p class="subname">전국 세차장 검색하기</p>
+                    </p>
+                </div>
+                <div class="col-6">
+                    <div class="p-0 border:none;"><img class="functioninfo" src="static/img/rankingimg.jpg" alt="">
+                    </div>
+                    <p class="mainname">조회 > 랭킹
+                    <p class="subname">전국 세차장 랭킹 조회하기</p>
+                    </p>
+                </div>
+                <div class="col-6">
+                    <div class="p-0 border:none;"><img class="functioninfo" src="static/img/shopimg.jpg" alt=""></div>
+                    <p class="mainname">구매 > 상점
+                    <p class="subname">세차용품 구매하기</p>
+                    </p>
+                </div>
+                <div class="col-6">
+                    <a href="/club">
+                        <div class="p-0 border;"><img class="functioninfo" src="static/img/clubimg.png" alt=""></div>
+                    </a>
+                    <p class="mainname">조회 > 동호회
+                    <p class="subname">전국 세차 동호회 조회하기</p>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
     <!-- content -->
