@@ -21,18 +21,18 @@
 <style>
     /* 눈누난나 폰트 적용 */
     @font-face {
-    font-family: 'NEXON Lv1 Gothic OTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
+        font-family: 'NEXON Lv1 Gothic OTF';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
 
-* {
-    font-family: 'NEXON Lv1 Gothic OTF';
-}
+    * {
+        font-family: 'NEXON Lv1 Gothic OTF';
+    }
 
-
-/* 채팅기능 css */
+    
+    /* 채팅기능 css */
 
     #chat_btn {
         position: fixed;
@@ -116,8 +116,8 @@
     /* 동호회 리스트 및 페이지기능 */
 
     /* a태그 파란밑줄 제거 및 글자색 변경 */
-    
-    .list-item > .remoteclubdetail {
+
+    .list-item>.remoteclubdetail {
         text-decoration: none;
         color: black;
     }
@@ -165,7 +165,7 @@
         font-size: 18px;
     }
 
-    .text .currentmember{
+    .text .currentmember {
         font-size: 15px;
     }
 
@@ -188,7 +188,7 @@
 
     .d-text h3 {
         font-size: 24px;
-        
+
     }
 
     .d-text p {
@@ -265,7 +265,7 @@
 </style>
 
 <body>
-    
+
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark"
         style="position: fixed; top: 0; left: 0; right: 0; z-index: 1;">
         <a href="/" class="navbar-brand">Foambble Bobble</a>
@@ -282,8 +282,7 @@
         </div>
     </nav>
     <!-- header -->
-    <div class="jumbotron text-center mb-0"
-        style="margin-top: 50px;">
+    <div class="jumbotron text-center mb-0" style="margin-top: 50px;">
         <h1>
             <a href="/" style="text-decoration: none; color: gray;">
                 Foambble Bobble Club
@@ -330,37 +329,53 @@
 
 
 
-
+<div class="container">
     <div class="containerpage">
         <div class="list-wrapper">
+            <% for(var i=0; i < cn.length; i++) { %>
 
-            <div class="list-item"><a class="remoteclubdetail" href="clubdetail1">
-                <div class="content">
-                    <img src="static/img/carwash_clubimg1.jpg" alt="">
-                    <div class="text">
-                        <h3>세린이즈</h3>
-                        <p>세린이들의 모임!</p>
-                        <p class="currentmember">현재 인원</p>
+                <a href="/clubdetail1?img=<%=cn[i].main_img%>&name=<%=cn[i].name%>&subname=<%=cn[i].subname%>"
+                    style="text-decoration: none;">
+
+
+                    <div class="list-item"><a class="remoteclubdetail" href="/clubdetail1?img=<%=cn[i].main_img%>&name=<%=cn[i].name%>&memberCount=<%=cn[i].memberCount%>&clubconImg=<%=cn[i].clubconImg%>">
+                            <div class="content">
+                                <img src="<%=cn[i].main_img%>" alt="">
+                                <div class="text">
+                                    <h3>
+                                        <%=cn[i].name%>
+                                    </h3>
+                                    <p>
+                                        <%=cn[i].subname%>
+                                    </p>
+                                    <p class="currentmember">현재 인원</p>
+                                </div>
+                            </div>
+
+                            <div class="description">
+                                <div class="d-text">
+                                    <h3>
+                                        <%=cn[i].backmaintext%>
+                                    </h3>
+                                    <p>
+                                        <%=cn[i].backsubtext%>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                    aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0"
+                                    aria-valuemax="100" style=<%=cn[i].progressStyle%>>
+                                    <%=cn[i].progress_man%>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
+                    <% } %>
 
-                <div class="description">
-                    <div class="d-text">
-                        <h3>세차환자는 오지마세요!</h3>
-                       <p>세차용품 무상지원 합니다.</p>
-                    </div>
-                </div>
-
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                        style="width: 40%">520명</div>
-                </div>
-            </a>
-            </div>
-
-
-            <div class="list-item">
+                        <!-- 동호회 페이지 코드 -->
+                        <!-- <div class="list-item">
                 <div class="content">
                     <img src="static/img/carwash_img2.jpg" alt="">
                     <div class="text">
@@ -382,6 +397,7 @@
                         aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
                         style="width: 75%">2050명</div>
                 </div>
+            </a>
             </div>
 
 
@@ -557,8 +573,8 @@
                         aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
                         style="width: 45%">250명</div>
                 </div>
-            </div>
-
+            </div> -->
+        </div>
 
 
 

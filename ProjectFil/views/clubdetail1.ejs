@@ -310,12 +310,13 @@
                     <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap">
                         <div class="group-info d-flex align-items-center">
                             <div class="me-3">
-                                <img class="rounded-circle img-fluid avatar-100" src="static/img/carwash_clubimg1.jpg"
-                                    alt="">
+                                <img class="rounded-circle img-fluid avatar-100" src="<%=clubdata.img%>" alt="">
                             </div>
                             <div class="info">
-                                <h4>세린이즈</h4>
-                                <p class="mb-0"><i class="ri-lock-fill pe-2"></i>비공개 모임 . 520 회원</p>
+                                <h4><%=clubdata.name%>
+                                    <%console.log(clubdata)%>
+                                </h4>
+                                <p class="mb-0"><i class="ri-lock-fill pe-2"></i>비공개 모임 . <%=clubdata.memberCount%>회원</p>
                             </div>
                         </div>
                         <div class="group-member d-flex align-items-center  mt-md-0 mt-2">
@@ -530,7 +531,7 @@
                                             <div class="d-flex justify-content-between">
                                                 <div class="">
                                                     <h5 class="mb-0 d-inline-block"><a href="#"
-                                                            class="posttitle">대조남</a></h5>
+                                                            class="posttitle">홍길동</a></h5>
                                                     <p class="mb-0">8시간전</p>
                                                 </div>
                                                 <div class="card-post-toolbar">
@@ -575,7 +576,7 @@
                                     </div>
                                 </div>
                                 <div class="user-post">
-                                    <a href="javascript:void();"><img src="static/img/carwash_img1.jpg" alt="post-image"
+                                    <a href="javascript:void();"><img src="<%=clubdata.clubconImg%>" alt="post-image"
                                             class="img-fluid w-100" /></a>
                                 </div>
                                 <div class="comment-area mt-3">
