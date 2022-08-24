@@ -36,8 +36,7 @@ app.get("/shop_item", (req, res) => {
         img: req.query.img,
         name: req.query.name,
         price: req.query.price,
-        infor: req.query.infor,
-
+        infor: req.query.infor
     }
     res.render("shop_item", { data: data });
 });

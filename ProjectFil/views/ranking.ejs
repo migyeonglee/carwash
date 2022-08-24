@@ -245,6 +245,7 @@
         top: -20px;
     }
 
+
     #selct_feedback1 {
         display: none;
     }
@@ -331,7 +332,7 @@
         <div class="row">
             <!-- left content -->
             <div class="col-sm-4">
-                <h2>피드백</h2>
+                <h3>피드백</h3>
                 <select id="selct_feedback" class="form-select select_bar1" aria-label="Default select example">
                     <option selected>Open this select menu</option>
                     <% for (var i=0; i<region.length; i++) { %>
@@ -416,17 +417,17 @@
             <div class="make_center col-sm-8">
                 <div class="ranking_div" style="position: reletive;">
                     <div class="ranking_div_mini"
-                        style="z-index:3; top:7%; left:5%;background-image: linear-gradient(to right,#2484fc,#6fa5ec);">
+                        style="z-index:3; top:7%; left:10%;background-image: linear-gradient(to right,#2484fc,#6fa5ec);">
                         <div class="cup_pos">
                             <img src="/static/img/cup_blue.png" class="card-img-top" alt="...">
                         </div>
                         <i class="fa-solid fa-1 fa-5x"></i>
                     </div>
-                    <div class="ranking_div_mini" style="z-index:2;top:12% ;left:35%">
+                    <div class="ranking_div_mini" style="z-index:2;top:12% ;left:36%">
                         <i class="fa-solid fa-2 fa-5x"></i>
 
                     </div>
-                    <div class="ranking_div_mini" style="z-index:1; top:17% ;left:65%">
+                    <div class="ranking_div_mini" style="z-index:1; top:17% ;left:62%">
                         <i class="fa-solid fa-3 fa-5x"></i>
 
                     </div>
@@ -572,6 +573,16 @@
                         })
                     })
                     // 버튼 클릭시 우측에서 슬라이드 나오면서 버튼은 사라짐
+                    $("#selct_feedback1").change(function () {
+                        local = $(this).val()
+                        var html = "";
+                        for (let index = 0; index < 20; index++) {
+                            html += `<option value="${c[local][r[local][index]]}">
+                                ${c[local][r[local][index]]}
+                            </option>`
+                        }
+                        $("#selct_feedback1").html(html)
+                    })
                     $("#chat_btn").click(function () {
                         $("#menu").addClass("open");
                         $("#chat_btn").addClass("chat_btn");
