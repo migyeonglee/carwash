@@ -296,13 +296,22 @@
     }
 
     .DetailPage {
+        position: relative;
         height: 0;
         overflow: hidden;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        color: white;
+        z-index: 1;
     }
+    .DetailPage::after {
+        width: 100%;
+        height: 100%;
+        content: "";
+        background: url("./static/img/aspart.jpg");
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.2;
+      }
     #id {
         display: flex;
         flex-direction: column;
@@ -318,6 +327,7 @@
         justify-content: center;
         flex-direction: column;
         width: 60%;
+        margin: auto;
         height: 100%;
     }
 
@@ -336,10 +346,11 @@
         align-items: center;
         justify-content: center;
         width: 90%;
+        position: relative;
     }
     .detailTable{
-        width: 80%;
-        height: 70%;
+        width: 100%;
+        height: 200px;
         box-shadow: 0px 0px 5px gray;
         border-radius: 10px;
     }
@@ -348,13 +359,15 @@
         justify-content: center;
         align-items: center;
         box-shadow: 1px 1px 0px 0px gray;
-
+        font-weight: bolder;
     }
     .small_div1{
         display: flex;
         justify-content: center;
         align-items: center;
         box-shadow: 1px 0px 0px 0px gray;
+        font-weight: bolder;
+
 
     }
     .small_div2{
@@ -362,7 +375,13 @@
         justify-content: center;
         align-items: center;
         box-shadow: 0px 1px 0px 0px gray;
+        
 
+    }
+    .sidepos{
+        display: flex;
+        position: absolute;
+        right: 0;
     }
 </style>
 
@@ -497,7 +516,14 @@
                     <div class="DetailPage" style="background-color: #e8e8e8;">
                         <div class="detailDiv1">
                             <div class="contentDiv" style="margin-bottom:15px;height:10%">
-                                <h5>info</h5>
+                                <div class="sidepos">
+                                    <div >
+                                        <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
+                                    </div>
+                                    <div >
+                                        <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
+                                    </div>
+                                </div>
                             </div>
                             <div class="detailTable">
                                 <div style="height:20%;width:100%;display:flex;">
@@ -519,17 +545,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="detailDiv2">
-                            <div class="detailTable" style="margin-bottom:15px;height:10%">
-                                <h5>info</h5>
-                            </div>
-                            <div class="contentDiv">
-                                <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
-                            </div>
-                            <div class="contentDiv">
-                                <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
-                            </div>
-                        </div>
+                        
                     </div>`
                     }
                     else {
@@ -550,7 +566,14 @@
                     <div class="DetailPage" style="background-color: #e8e8e8;">
                         <div class="detailDiv1">
                             <div class="contentDiv" style="margin-bottom:15px;height:10%">
-                                <h5>info</h5>
+                                <div class="sidepos">
+                                    <div >
+                                        <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
+                                    </div>
+                                    <div >
+                                        <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
+                                    </div>
+                                </div>
                             </div>
                             <div class="detailTable">
                                 <div style="height:20%;width:100%;display:flex;">
@@ -572,17 +595,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="detailDiv2">
-                            <div class="detailTable" style="margin-bottom:15px;height:10%">
-                                <h5>info</h5>
-                            </div>
-                            <div class="contentDiv">
-                                <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
-                            </div>
-                            <div class="contentDiv">
-                                <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
-                            </div>
-                        </div>
+                        
                     </div>`
                     }
                 }
@@ -605,7 +618,14 @@
                         <div class="DetailPage" style="background-color: #e8e8e8;">
                             <div class="detailDiv1">
                                 <div class="contentDiv" style="margin-bottom:15px;height:10%">
-                                    <h5>info</h5>
+                                    <div class="sidepos">
+                                        <div >
+                                            <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
+                                        </div>
+                                        <div >
+                                            <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="detailTable">
                                     <div style="height:20%;width:100%;display:flex;">
@@ -627,17 +647,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="detailDiv2">
-                                <div class="contentDiv" style="margin-bottom:15px">
-                                    <h5>rate</h5>
-                                </div>
-                                <div class="contentDiv">
-                                    <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
-                                </div>
-                                <div class="contentDiv">
-                                    <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
-                                </div>
-                            </div>
+                            
                         </div>`
                     }
                     else {
@@ -658,7 +668,14 @@
                         <div class="DetailPage" style="background-color: white;">
                             <div class="detailDiv1">
                                 <div class="contentDiv" style="margin-bottom:15px;height:10%">
-                                    <h5>info</h5>
+                                    <div class="sidepos">
+                                        <div >
+                                            <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
+                                        </div>
+                                        <div >
+                                            <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="detailTable">
                                     <div style="height:20%;width:100%;display:flex;">
@@ -680,17 +697,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="detailDiv2">
-                                <div class="contentDiv" style="margin-bottom:15px">
-                                    <h5>rate</h5>
-                                </div>
-                                <div class="contentDiv">
-                                    <i class="bi bi-hand-thumbs-up-fill"></i> ${rating[local][i]["like"]}
-                                </div>
-                                <div class="contentDiv">
-                                    <i class="bi bi-hand-thumbs-down"></i> ${rating[local][i]["dislike"]}
-                                </div>
-                            </div>
+                            
                         </div>`
                     }
                 }
