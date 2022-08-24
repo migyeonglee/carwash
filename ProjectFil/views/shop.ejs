@@ -9,30 +9,97 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <!-- bootstrap_js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <!-- pagination -->
 
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
+    <title>shop-HOME</title>
     <style>
+        @font-face {
+            font-family: 'TTTogether';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
         * {
+            font-family: 'TTTogether';
+            font-weight: normal;
+            font-style: normal;
             margin: 0;
             padding: 0;
         }
         
         hr {
-            border: 1px solid gainsboro;
+            border: 1px solid rgb(139, 139, 139);
+            margin: 0px 1px 0px 1px;
         }
+        
+        ul {
+            list-style: none;
+        }
+        /* navbar */
+        
+        .navCss {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+        
+        .navberM {
+            margin: auto;
+        }
+        
+        .navbar-brand {
+            margin-left: 10px;
+        }
+        /* 광고 */
         
         .carousel-item>img {
             height: 300px;
         }
-        /* .container {
-            align-items: center;
+        
+        .color {
+            background-color: gainsboro;
         }
-         */
+        /* 카테고리 */
+        
+        #drop {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .dropdown>a {
+            text-decoration: none;
+            border-radius: 0;
+            margin: 20px 10px 0px 10px
+        }
+        
+        .dropdown-menu>li>a {
+            white-space: normal;
+        }
+        /* item list */
+        
+        #listTitle {
+            text-align: center;
+            margin: 20px 0 10px 0;
+        }
+        
+        #paging {
+            flex-direction: row;
+        }
         
         .row {
-            flex-wrap: wrap;
+            margin-left: 20px;
             display: flex;
-            justify-content: start;
+        }
+        
+        li {
+            display: inline-block;
         }
         
         .col-4 {
@@ -40,11 +107,7 @@
             border-radius: 5px;
             width: 200px;
             height: 300px;
-            margin: 10px 20px 30px 20px;
-        }
-        
-        .color {
-            background-color: gainsboro;
+            margin: 20px 20px 40px 20px;
         }
         
         .col-4>a>img {
@@ -55,63 +118,57 @@
             height: 170px;
         }
         
-        .Kategorie {
-            margin: 20px 30px 20px 30px;
-            justify-items: center;
-            align-items: center;
+        .col-4>a>p {
+            margin: 5px 20px 0px 20px;
+        }
+        
+        .itemName {
+            height: 80px;
+            text-align: left;
+            color: black;
+        }
+        
+        .itemPrice {
+            text-align: end;
+            color: blue;
+            margin-bottom: 10px;
         }
         
         .col-4:hover {
             transform: scale(1.2)
         }
+        /* 경고창 */
         
-        .nav-tabs>button {
-            justify-items: center;
-            align-items: center;
+        #purchase {
+            display: none;
+        }
+        /* 페이징*/
+        
+        #myTabContent {
+            color: black;
         }
     </style>
-
 </head>
 
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a href="" class="navbar-brand">Foambble Bobble</a>
+        <!-- Toggle Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
-          </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                </ul>
-            </div>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav navbarM">
+                <li class="nav-item"><a href="/" class="nav-link">세차장 조회</a></li>
+                <li class="nav-item"><a href="" class="nav-link">상점</a></li>
+                <li class="nav-item"><a href="/club" class="nav-link">동호회</a></li>
+            </ul>
         </div>
     </nav>
     <!-- carousel -->
     <!-- 광고 -->
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -121,23 +178,22 @@
             <div class="carousel-item active">
                 <img src="" class="d-block w-100 color" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-
+                    <h5>광고1</h5>
+                    <p>광고1 정보</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="" class="d-block w-100 color" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
+                    <h5>광고2</h5>
+                    <p>광고2 정보</p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="" class="d-block w-100 color" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
+                    <h5>광고3</h5>
+                    <p>광고3 정보</p>
                 </div>
             </div>
         </div>
@@ -151,94 +207,132 @@
         </button>
     </div>
 
-    <!-- nacs and tabs -->
+    <!-- dropdown-->
     <!-- 카테고리 -->
-    <div class="Kategorie">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#exterior-tab-pane" type="button" role="tab" aria-controls="exterior-tab-pane" aria-selected="true">외장관리</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#built-in-tab-pane" type="button" role="tab" aria-controls="built-in-tab-pane" aria-selected="false">실내관리</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="wax-coating-tab" data-bs-toggle="tab" data-bs-target="#wax-coating-tab-pane" type="button" role="tab" aria-controls="wax-coating-tab-pane" aria-selected="false">왁스/코팅</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#towel-tab-pane" type="button" role="tab" aria-controls="towel-tab-pane" aria-selected="false">세차타올</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#other-tab-pane" type="button" role="tab" aria-controls="other-tab-pane" aria-selected="false">기타용품</button>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="exterior-tab-pane" role="tabpanel" aria-labelledby="exterior-tab" tabindex="0">
-                <a href="">...</a>
-            </div>
-            <div class="tab-pane fade" id="built-in-tab-pane" role="tabpanel" aria-labelledby="built-in-tab" tabindex="0">
-                <a href="">...</a>
-            </div>
-            <div class="tab-pane fade" id="wax-coating-tab-pane" role="tabpanel" aria-labelledby="wax-coating-tab" tabindex="0">
-                <a href="">...</a>
-            </div>
-            <div class="tab-pane fade" id="towel-tab-pane" role="tabpanel" aria-labelledby="towel-tab" tabindex="0">
-                <a href="">...</a>
-            </div>
-            <div class="tab-pane fade" id="other-tab-pane" role="tabpanel" aria-labelledby="other-tab" tabindex="0">
-                <a href="">...</a>
-            </div>
+    <div id="drop">
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            외 장 관 리
+        </a>
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item " href="#">카샴푸/폼샴푸</a></li>
+                <li><a class="dropdown-item" href="#">버그/타르/철분/APC</a></li>
+                <li><a class="dropdown-item" href="#">세정제/광택제</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            내 장 관 리
+        </a>
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">직물세정&보호/가죽세정&보호</a></li>
+                <li><a class="dropdown-item" href="#">유막제거</a></li>
+                <li><a class="dropdown-item" href="#">유리세정/코팅</a></li>
+                <li><a class="dropdown-item" href="#">기타 실내관리</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            왁 스 / 코 팅
+        </a>
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">고체/리퀴드왁스</a></li>
+                <li><a class="dropdown-item" href="#">물왁스/퀵디테일러</a></li>
+                <li><a class="dropdown-item" href="#">외장플라스틱 보호제</a></li>
+                <li><a class="dropdown-item" href="#">유리막코팅/관리제</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            세 차 타 월
+        </a>
+
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">드라잉타월</a></li>
+                <li><a class="dropdown-item" href="#">버핑타월</a></li>
+                <li><a class="dropdown-item" href="#">유리타월</a></li>
+                <li><a class="dropdown-item" href="#">다용도타월</a></li>
+                <li><a class="dropdown-item" href="#">타월세정제</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            기 타 용 품
+        </a>
+
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">워시미트/스펀지</a></li>
+                <li><a class="dropdown-item" href="#">워시버킷/그릿가드</a></li>
+                <li><a class="dropdown-item" href="#">브러쉬</a></li>
+                <li><a class="dropdown-item" href="#">소분/분무기/정리함</a></li>
+            </ul>
         </div>
     </div>
+
     <hr>
-    <br>
+    <h1 id="listTitle">카샴푸/폼샴푸</h1>
     <!-- grid -->
     <!-- col hover 시 확대 + text 대신 col click 시 page move -->
     <!-- 상품 목록 -->
-
-    <div>
-        <select name="limit" id="custom-select" onchange="this.parentElement.parentEl"></select>
-    </div>
     <div class="container text-center">
-        <div class="row" name="page1">
-            <% for(var i = 0; i < sn.length; i++) { %>
-                <div class="col-4">
-                    <a href="/shop_item?img=<%=sn[i].item_img%>&name=<%=sn[i].name%>&price=<%=sn[i].price%>&infor=<%=sn[i].infor_img%>" style="text-decoration: none;">
-                        <img src=<%=sn[i].item_img%> alt="">
-                        <p style="height: 50px; text-align: left; color: black;">
-                            <%=sn[i].name%>
-                        </p>
+        <div class="row">
+            <ul id="paging">
+                <% for(var i = 0; i < sn.length; i++) { %>
+                    <%var page=0;%>
+                        <% i <=5 ? page = "1" : page = "2"; %>
+                            <li data-target="#sn_<%=page%>">
+                                <div class="col-4">
+                                    <a href="/shop_item?img=<%=sn[i].item_img%>&name=<%=sn[i].name%>&price=<%=sn[i].price%>&infor=<%=sn[i].infor_img%>" style="text-decoration: none;">
+                                    <img src="<%=sn[i].item_img %>" alt="">
+                                        <p class="itemName">
+                                            <%=sn[i].name%>
+                                        </p>
+                                        <hr>
+                                        <p class="itemPrice">
+                                            <%=sn[i].price%>
+                                        </p>
+                                    </a>
+                                </div>
+                            </li>
+                            <% } %>
+            </ul>
 
-                        <hr>
-                        <p style="text-align: end; color: red;  ">
-                            <%=sn[i].price%>
-                        </p>
-                    </a>
-                </div>
-                <% } %>
+
         </div>
+
     </div>
 
     </script>
     <br>
     <!-- pagination -->
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example justify-content-center">
         <ul class="pagination justify-content-center">
             <li class="page-item">
-                <a class="page-link" href="#page_start" aria-label="Previous">
+                <a class="page-link" href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li class="page-item active"><a name="page_start" class="page-link" href="#page1">1</a></li>
-            <li class="page-item"><a class="page-link" href="#page2">2</a></li>
-            <li class="page-item"><a name="page_end" class="page-link" href="#page3">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#page_end" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
+            <li id="sn_1" class="page-item "><a class="page-link" href="">1</a></li>
+            <li id="sn_2" class="page-item "><a class="page-link" href="">2</a></li>
+            <li id="sn_3" class="page-item ">
+                <a class="page-link" href="">3</a></li>
+            <li class=" page-item ">
+                <a class="page-link " href="# " aria-label="Next ">
+                    <span aria-hidden="true ">&raquo;</span>
                 </a>
             </li>
         </ul>
     </nav>
-    <div class="test"></div>
+
+    <script>
+        $(".dropdown-item").on("click", function() {
+
+        });
+    </script>
 </body>
 
 </html>
