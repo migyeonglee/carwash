@@ -245,13 +245,59 @@
         top: -20px;
     }
 
+
+    #selct_feedback1 {
+        display: none;
+    }
+
     .page_name {
-        width: 100%;
-        height: 50px;
+        height: 40px;
         display: flex;
-        align-items: center;
 
+    }
 
+    @media screen and (min-width: 990px) {
+        .table_bar div {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px gray;
+            margin-bottom: 10px;
+            background-color: gray;
+            color: white;
+            font-size: 20px;
+        }
+    }
+
+    @media screen and (max-width: 990px) {
+        .table_bar div {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px gray;
+            margin-bottom: 15px;
+            background-color: gray;
+            color: white;
+            font-size: 15px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .table_bar div {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px gray;
+            margin-bottom: 15px;
+            background-color: gray;
+            color: white;
+            font-size: xx-small;
+        }
+    }
+
+    .s {
+        position: absolute;
+        left: 40%;
+        top: 60%;
+        color: red;
+        display: block;
     }
 </style>
 
@@ -275,7 +321,8 @@
         </div>
     </nav>
     <div class="page_name">
-        <div style="margin-top: 20px; margin-left:20px;">
+        <img src="/static/img/rank.png" alt="" height="100%" style="margin-left: 10px; margin-top:5px">
+        <div style="margin-top: 10px; margin-left:10px">
             <h2>세차장 랭킹</h2>
         </div>
     </div>
@@ -296,28 +343,24 @@
                 </select>
                 <select id="selct_feedback1" class="form-select select_bar1" aria-label="Default select example">
                     <option selected>Open this select menu</option>
-                    <% for (var i=0; i<region.length; i++) { %>
-                        <option value="<%=region[i]%>">
-                            <%=region[i]%>
-                        </option>
-                        <% } %>
+
                 </select>
                 <div class="check_box">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheck">
+                        <label class="form-check-label" for="flexCheck">
                             세차장이 깨끗해요!
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label">
+                        <label class="form-check-label" for="flexCheckDefault">
                             사장님이 친절해요!
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-check-label">
+                        <label class="form-check-label" for="flexCheckChecked">
                             가격이 존나싸요!
                         </label>
                     </div>
@@ -388,6 +431,7 @@
                         <i class="fa-solid fa-3 fa-5x"></i>
 
                     </div>
+                    <div class="s" ;>지역을 선택해주세요!</div>
                 </div>
                 <div class="select_bar">
                     <div class="select_local">
@@ -403,16 +447,16 @@
                     </select>
                 </div>
                 <div class="row table_bar">
-                    <div class="col-3" style="font-size:20px; position:reletive; ">
+                    <div class="col-3" style="position:reletive; ">
                         순위
                     </div>
-                    <div class="col-5" style="font-size:20px; position:reletive; ">
+                    <div class="col-5" style="position:reletive; ">
                         이름
                     </div>
-                    <div class="col-2" style="font-size:20px; position:reletive; ">
+                    <div class="col-2" style="position:reletive; ">
                         좋아요
                     </div>
-                    <div class="col-2" style="font-size:20px; position:reletive; ">
+                    <div class="col-2" style="position:reletive; ">
                         싫어요
                     </div>
                 </div>
@@ -431,7 +475,7 @@
                     </tbody>
                 </table> -->
 
-                <div class="table_div">
+                <div class="table_div" style="height: 600px;">
                     <table class="table table-striped table-hover">
                         <tbody class="app_sel">
 
@@ -465,18 +509,23 @@
 
                 <!-- --------------------------------------------------------------------------------------------------------------->
                 <script>
-                    $('#openModalBtn').on('click', function () { $('#modalBox').modal('show'); }); $('#closeModalBtn').on('click', function () { $('#modalBox').modal('hide'); });
+                    $('#openModalBtn').on('click', function () {
+                        $('#modalBox').modal('show'); 
+                    }); 
+                    $('#closeModalBtn').on('click', function () { 
+                        $('#modalBox').modal('hide'); 
+                    });
 
-                    var car_washer_name = '<%-aaaaaa%>';
+                    var c = <%-JSON.stringify(car_washer_name) %>;
                     var ranking_index = '<%-aaaaaa1%>';
                     var ranking_rating = '<%-aaaaaa2%>';
                     console.log($(".card-text"));
-                    var c = JSON.parse(car_washer_name);
+                    //var c = JSON.parse(car_washer_name);
                     var r = JSON.parse(ranking_index);
                     var r_r = JSON.parse(ranking_rating);
 
                     let local;
-                    //console.log($(".tear")[0]);
+                    console.log(r_r);
                     $("#sel").change(function () {
                         local = $(this).val()
 
@@ -487,7 +536,7 @@
                         ${index + 1}
                     </th>
                     <td style="width:50% ;">
-                        ${c[local][r[local][index]]}
+                        ${c[local][r[local][index]]["사업장명"]}
                     </td>
                     <td>${r_r[[local]][r[local][index]]["like"]}</td>
                     <td>${r_r[[local]][r[local][index]]["dislike"]}</td>
@@ -499,14 +548,29 @@
                         let html1 = `<div class="cup_pos">
                             <img src="/static/img/cup_blue.png" class="card-img-top" alt="...">
                         </div>
-                        <i class="fa-solid fa-1 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][1]]}`;
-                        let html2 = `<i class="fa-solid fa-2 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][0]]}`;
-                        let html3 = `<i class="fa-solid fa-3 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][2]]}`;
+                        <i class="fa-solid fa-1 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][1]]["사업장명"]}`;
+                        let html2 = `<i class="fa-solid fa-2 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][0]]["사업장명"]}`;
+                        let html3 = `<i class="fa-solid fa-3 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][2]]["사업장명"]}`;
                         $(".ranking_div_mini").eq(0).html(html1)
                         $(".ranking_div_mini").eq(1).html(html2)
                         $(".ranking_div_mini").eq(2).html(html3)
-
+                        $(".s").css({
+                            "display": "none"
+                        })
                         $(".card-text").text(`${c[local][r[local][0]]} 오늘의 최고 goat`)
+                    })
+                    $("#selct_feedback").change(function () {
+                        local = $(this).val()
+                        var html = "";
+                        for (let index = 0; index < 20; index++) {
+                            html += `<option value="${c[local][r[local][index]]["사업장명"]}">
+                                ${c[local][r[local][index]]["사업장명"]}
+                            </option>`
+                        }
+                        $("#selct_feedback1").html(html)
+                        $("#selct_feedback1").css({
+                            "display": "block"
+                        })
                     })
                     // 버튼 클릭시 우측에서 슬라이드 나오면서 버튼은 사라짐
                     $("#selct_feedback1").change(function () {
