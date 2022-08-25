@@ -537,7 +537,7 @@
                         ${index + 1}
                     </th>
                     <td style="width:50% ;">
-                        ${c[local][r[local][index]]["사업장명"]}
+                        ${c[local][r_r[local][index]["index"]]["사업장명"]}
                     </td>
                     <td>${r_r[[local]][r[local][index]]["like"]}</td>
                     <td>${r_r[[local]][r[local][index]]["dislike"]}</td>
@@ -549,9 +549,9 @@
                         let html1 = `<div class="cup_pos">
                             <img src="/static/img/cup_blue.png" class="card-img-top" alt="...">
                         </div>
-                        <i class="fa-solid fa-1 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][1]]["사업장명"]}`;
-                        let html2 = `<i class="fa-solid fa-2 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][0]]["사업장명"]}`;
-                        let html3 = `<i class="fa-solid fa-3 fa-5x" style="margin-bottom:10px;"></i>${c[local][r[local][2]]["사업장명"]}`;
+                        <i class="fa-solid fa-1 fa-5x" style="margin-bottom:10px;"></i>${c[local][r_r[local][0]["index"]]["사업장명"]}`;
+                        let html2 = `<i class="fa-solid fa-2 fa-5x" style="margin-bottom:10px;"></i>${c[local][r_r[local][1]["index"]]["사업장명"]}`;
+                        let html3 = `<i class="fa-solid fa-3 fa-5x" style="margin-bottom:10px;"></i>${c[local][r_r[local][2]["index"]]["사업장명"]}`;
                         $(".ranking_div_mini").eq(0).html(html1)
                         $(".ranking_div_mini").eq(1).html(html2)
                         $(".ranking_div_mini").eq(2).html(html3)
@@ -580,10 +580,18 @@
                         let take_local=$("#selct_feedback").val();
                         let take_carwash_val=$("#selct_feedback1").val();
                         if(radioVal==="like"){
-                            r_r[[take_local]][r[take_local][take_carwash_val]]["like"]++;
+                            for(let i=0;i<r_r[take_local].length;i++){
+                                if(r_r[take_local][i]["index"]==take_carwash_val){
+                                    r_r[take_local][i]["like"]++;
+                                }
+                            }
                         }
                         else if(radioVal==="dislike"){
-                            r_r[[take_local]][r[take_local][take_carwash_val]]["dislike"]++;
+                            for(let i=0;i<r_r[take_local].length;i++){
+                                if(r_r[take_local][i]["index"]==take_carwash_val){
+                                    r_r[take_local][i]["dislike"]++;
+                                }
+                            }
                         }
                         console.log(JSON.stringify(r_r));
                         
