@@ -10,9 +10,8 @@
     <!-- bootstrap_js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <!-- pagination -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+    <script src="/path/to/cdn/jquery.slim.min.js"></script>
+    <script src="/path/to/px-pagination.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
     <title>shop-HOME</title>
@@ -147,6 +146,58 @@
         #myTabContent {
             color: black;
         }
+        
+        .px-paginate-container {
+            user-select: none;
+        }
+        
+        .px-paginate-container.px-left {
+            float: left;
+        }
+        
+        .px-paginate-container .d-none {
+            display: none;
+        }
+        
+        .px-paginate-container.px-center {
+            display: table;
+            margin: 0 auto;
+        }
+        
+        .px-paginate-container.px-right {
+            float: right;
+        }
+        
+        .px-paginate-container .px-btn,
+        .px-paginate-container .px-points {
+            float: left;
+            width: 32px;
+            text-align: center;
+            padding: 6px 0;
+            border: 1px solid #cdcdcd;
+            border-right: none;
+            background: #fff;
+            color: #45afe4;
+        }
+        
+        .px-paginate-container .px-points {
+            background: #f4f4f4;
+            color: #747474;
+        }
+        
+        .px-paginate-container .px-btn:last-child {
+            border-right: 1px solid #cdcdcd;
+        }
+        
+        .px-paginate-container .px-btn:hover {
+            cursor: pointer;
+            background: rgb(216, 241, 255);
+        }
+        
+        .px-paginate-container .px-btn.selected {
+            background: #45afe4;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -280,13 +331,11 @@
     <!-- 상품 목록 -->
     <div class="container text-center">
         <div class="row">
-            <ul id="paging">
+            <ul>
                 <% for(var i = 0; i < sn.length; i++) { %>
-                    <%var page=0;%>
-                        <% i <=5 ? page = "1" : page = "2"; %>
-                            <li data-target="#sn_<%=page%>">
-                                <div class="col-4">
-                                    <a href="/shop_item?img=<%=sn[i].item_img%>&name=<%=sn[i].name%>&price=<%=sn[i].price%>&infor=<%=sn[i].infor_img%>" style="text-decoration: none;">
+                    <li>
+                        <div class="col-4">
+                            <a href="/shop_item?img=<%=sn[i].item_img%>&name=<%=sn[i].name%>&price=<%=sn[i].price%>&infor=<%=sn[i].infor_img%>" style="text-decoration: none;">
                                     <img src="<%=sn[i].item_img %>" alt="">
                                         <p class="itemName">
                                             <%=sn[i].name%>
@@ -296,43 +345,44 @@
                                             <%=sn[i].price%>
                                         </p>
                                     </a>
-                                </div>
-                            </li>
-                            <% } %>
+                        </div>
+                    </li>
+                    <% } %>
             </ul>
-
-
         </div>
-
     </div>
-
-    </script>
     <br>
     <!-- pagination -->
-    <nav aria-label="Page navigation example justify-content-center">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li id="sn_1" class="page-item "><a class="page-link" href="">1</a></li>
-            <li id="sn_2" class="page-item "><a class="page-link" href="">2</a></li>
-            <li id="sn_3" class="page-item ">
-                <a class="page-link" href="">3</a></li>
-            <li class=" page-item ">
-                <a class="page-link " href="# " aria-label="Next ">
-                    <span aria-hidden="true ">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
+    <div class="paging"></div>
+    <!-- footer -->
+    <div class="jumbotron text-center mt-5 mb-0">
+        <h3 class="text-secondary">Foambble Bobble</h3>
+        <p>Foambble Bobble Homepage is Designed by <span class="text-primary">6 group</span></p>
+    </div>
     <script>
         $(".dropdown-item").on("click", function() {
 
         });
+        // paging
+        $(function() {
+            $(".paging").pxpaginate({
+                totalPageCount: 3,
+                maxBtnCount: 3,
+                align: "center",
+                nextPrevBtnShow: true,
+                firstLastBtnShow: true,
+                prevPageName: '<',
+                nextPageName: '>'
+
+
+
+
+            });
+        });
     </script>
+    <script src="/path/to/cdn/jquery.slim.min.js"></script>
+    <script src="/path/to/px-pagination.js"></script>
+
 </body>
 
 </html>
