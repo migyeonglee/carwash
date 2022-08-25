@@ -112,11 +112,6 @@ app.get("/search", (req, res) => {
         }
     }
     console.log("get",rating["서울특별시"]);
-    for(let i=0;i<region.length;i++){
-        rating[region[i]].sort(function(a,b){
-            return b.like - a.like;
-        })
-    }
     console.log("get",rating["서울특별시"]);
     res.render("search", { region: region, rating: rating, car_washer_name: car_washer_name, ranking_index: ranking_index });
 })
