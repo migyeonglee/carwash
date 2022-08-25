@@ -18,6 +18,70 @@
 </head>
 
 <style>
+
+    /* 눈누난나 폰트 적용 */
+    /* 후보1 NEXON */
+    /* @font-face {
+        font-family: 'NEXON Lv1 Gothic OTF';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    * {
+        font-family: 'NEXON Lv1 Gothic OTF';
+    } */
+
+    /* 후보2 TT투게더 */
+    /* @font-face {
+    font-family: 'TTTogether';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    * {
+        font-family: 'TTTogether';
+    } */
+
+    /* 후보3 이사만루*/
+    /* @font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    * {
+        font-family: 'GongGothicMedium';
+    } */
+
+    /* 후보4 해피니스 산스 Title*/
+    /* @font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    * {
+        font-family: 'Happiness-Sans-Title';
+    } */
+
+    /* 후보5 수트*/
+    @font-face {
+    font-family: 'SUIT-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+    * {
+        font-family: 'SUIT-Medium';
+    }
+    
+    /* 채팅기능 css */
+
     #chat_btn {
         position: fixed;
         right: 50px;
@@ -100,8 +164,8 @@
     /* 동호회 리스트 및 페이지기능 */
 
     /* a태그 파란밑줄 제거 및 글자색 변경 */
-    
-    .list-item > .remoteclubdetail {
+
+    .list-item>.remoteclubdetail {
         text-decoration: none;
         color: black;
     }
@@ -149,7 +213,7 @@
         font-size: 18px;
     }
 
-    .text .currentmember{
+    .text .currentmember {
         font-size: 15px;
     }
 
@@ -171,6 +235,7 @@
 
     .d-text h3 {
         font-size: 24px;
+
     }
 
     .d-text p {
@@ -229,6 +294,17 @@
         border: none;
     }
 
+     
+    
+    /* 동호회 목록 미디어쿼리 */
+    @media screen and (max-width:986px) {
+        .container {
+            max-width: 1024px;
+            padding: 15px;
+        }
+    }
+
+
     /* 동호회 목록 미디어쿼리 */
     @media screen and (max-width:800px) {
         .list-wrapper {
@@ -242,12 +318,12 @@
             margin: auto;
 
         }
-
     }
+    
 </style>
 
 <body>
-    
+
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark"
         style="position: fixed; top: 0; left: 0; right: 0; z-index: 1;">
         <a href="" class="navbar-brand">Foambble Bobble</a>
@@ -265,11 +341,14 @@
         </div>
     </nav>
     <!-- header -->
-    <div class="jumbotron text-center mb-0"
-        style="height: 500px; margin-top: 50px;">
+
+    <div class="jumbotron text-center mb-0" style="margin-top: 50px; background-image:linear-gradient(
+        rgba(0, 0, 0, 0.664),
+        rgba(0, 0, 0, 0.644)
+      ), url(static/img/peoplepic.png); background-position: center; background-size: cover;">
         <h1>
-            <a href="/" style="text-decoration: none; color: gray;">
-                Foambble Bobble Car Wash
+            <a href="/" style="text-decoration: none; color: rgb(255, 255, 255); font-size: 40px; line-height: 1.14286; font-weight: 600; letter-spacing: .007em; text-shadow: -1px 0px #ffd500af, 0px 1px rgba(255, 255, 0, 0.658), 3px 0px #ffd500ab, 0px -2px rgba(255, 255, 0, 0.575);">
+                Foambble Bobble Club
             </a>
         </h1>
         <p>전국 셀프세차인에게 유용한 정보들과 세차인들간의 커뮤니케이션을 위한 사이트</p>
@@ -314,44 +393,55 @@
 
 
 
-
+<div class="container">
     <div class="containerpage">
         <div class="list-wrapper">
 
-            <div class="list-item"><a class="remoteclubdetail" href="clubdetail1">
-                <div class="content">
-                    <img src="static/img/carwash_img1.jpg" alt="">
-                    <div class="text">
-                        <h3>세린이즈</h3>
-                        <p>세린이들의 모임!</p>
-                        <p class="currentmember">현재 인원</p>
+            <% for(var i=0; i < cn.length; i++) { %>
+
+                <a href="/clubdetail1?img=<%=cn[i].main_img%>&name=<%=cn[i].name%>&subname=<%=cn[i].subname%>"
+                    style="text-decoration: none;">
+
+
+                    <div class="list-item"><a class="remoteclubdetail" href="/clubdetail1?img=<%=cn[i].main_img%>&name=<%=cn[i].name%>&memberCount=<%=cn[i].memberCount%>&clubconImg=<%=cn[i].clubconImg%>">
+                            <div class="content">
+                                <img src="<%=cn[i].main_img%>" alt="">
+                                <div class="text">
+                                    <h3>
+                                        <%=cn[i].name%>
+                                    </h3>
+                                    <p>
+                                        <%=cn[i].subname%>
+                                    </p>
+                                    <p class="currentmember">현재 인원</p>
+                                </div>
+                            </div>
+
+                            <div class="description">
+                                <div class="d-text">
+                                    <h3>
+                                        <%=cn[i].backmaintext%>
+                                    </h3>
+                                    <p>
+                                        <%=cn[i].backsubtext%>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                                    aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0"
+                                    aria-valuemax="100" style=<%=cn[i].progressStyle%>>
+                                    <%=cn[i].progress_man%>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-
-                <div class="description">
-                    <div class="d-text">
-                        <h3>내용입력</h3>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <h4>내용입력</h4>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                        <p>내용입력</p>
-                    </div>
-                </div>
-
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                        aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                        style="width: 40%">520명</div>
-                </div>
-            </a>
-            </div>
+                    <% } %>
 
 
-            <div class="list-item">
+                        <!-- 동호회 페이지 코드 -->
+                        <!-- <div class="list-item">
                 <div class="content">
                     <img src="static/img/carwash_img1.jpg" alt="">
                     <div class="text">
@@ -380,6 +470,7 @@
                         aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
                         style="width: 75%">2050명</div>
                 </div>
+            </a>
             </div>
 
 
@@ -604,8 +695,8 @@
                         aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
                         style="width: 45%">250명</div>
                 </div>
-            </div>
-
+            </div> -->
+        </div>
 
 
 
