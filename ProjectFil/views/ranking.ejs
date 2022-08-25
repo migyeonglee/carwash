@@ -292,7 +292,16 @@
             font-size: xx-small;
         }
     }
-
+    @media screen and (max-width:720px) {
+        .unnoneblock{
+            display: none;
+        }
+    }
+    @media screen and (max-width:320px) {
+        *{
+            display: none;
+        }
+    }
     .s {
         position: absolute;
         left: 40%;
@@ -428,7 +437,7 @@
                         <i class="fa-solid fa-2 fa-5x"></i>
 
                     </div>
-                    <div class="ranking_div_mini" style="z-index:1; top:17% ;left:62%">
+                    <div class="ranking_div_mini unnoneblock" style="z-index:1; top:17% ;left:62%">
                         <i class="fa-solid fa-3 fa-5x"></i>
 
                     </div>
