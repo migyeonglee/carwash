@@ -75,6 +75,7 @@
         overflow: scroll;
     }
 
+
     /* 메뉴 스크롤바 숨기기 */
 
     #menu {
@@ -93,12 +94,13 @@
         margin-right: 40px;
     }
 
+
     .mainname {
-        font-size: 20px;
+        font-size: 15px;
         color: gray;
         margin: 0;
         text-align: center;
-        margin-top: 10px;
+        margin-top: 20px;
         line-height: 1.14286;
         font-weight: 600;
         letter-spacing: .007em;
@@ -106,7 +108,7 @@
 
     .subname {
         text-align: center;
-        font-size: 25px;
+        font-size: 20px;
         line-height: 1.14286;
         font-weight: 600;
         letter-spacing: .007em;
@@ -119,12 +121,14 @@
     }
 
     .functioninfo {
+        display: block;
         cursor: pointer;
-        width: 100%;
-        height: 300px;
-        border-radius: 20%;
+        margin: auto;
+        width: 200px;
+        height: 250px;
         object-fit: cover;
-        border: 1px solid rgba(255, 255, 0, 0.644);
+        /* border: 1px solid rgba(255, 255, 0, 0.644); */
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     }
 
     .functioninfo:hover {
@@ -132,16 +136,50 @@
         -webkit-transition: .3s ease-in-out;
         transition: .3s ease-in-out;
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        transform: translateY(-10px);
+        width: 210px;
+        border-radius: 20px;
+
     }
 
     .middlelogoimg {
         width: 80px;
         margin-bottom: 20px;
+        margin-top: 70px;
+    }
+    /* .scrollbtnbumo {
+        display: block;
+        margin: auto;
+    } */
+
+    /* 버튼 바운스 */
+
+    .scrollbtn {
+        width: 50px; 
+        position: absolute; 
+        left: 50%;
+        bottom: 30px; 
+        animation: bounce_frames 0.8s;
+        animation-direction: alternate;
+        animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes bounce_frames {
+        from {
+            transform: translate(-50%, 0);
+        }
+        to {
+            transform: translate(-50%, 30px);
+        }
     }
 
 
     /* 기능 목록 미디어쿼리 */
+    @media screen and (max-width:993px) {
+        .col {
+            margin: 50px;
+        }
+    }
     @media screen and (max-width:800px) {
         .cardmoim {
             display: block;
@@ -149,22 +187,29 @@
             margin: auto;
         }
 
-        .col-6 {
+        .col {
             width: 100%;
             margin: auto;
             border-radius: 10px;
             max-width: 80%;
         }
+        .functioninfo {
+            width: 100%;
+        }
+        .functioninfo:hover {
+            width: 100%;
+        }
     }
 
     @media screen and (max-width:500px) {
-        .col-6 {
+        .col {
             width: 100%;
             margin: auto;
             border-radius: 10px;
             max-width: 100%;
         }
     }
+
 </style>
 
 <body>
@@ -185,50 +230,59 @@
     </nav>
     <!-- header -->
     <div class="jumbotron text-center mb-0"
-        style="height: 500px; background-image: linear-gradient(
+        style="height: 100vh; background-image: linear-gradient(
             rgba(0, 0, 0, 0.486),
             rgba(0, 0, 0, 0.664)
-          ),url(static/img/washgif2.gif); background-size:cover; background-position:right 35% bottom 75%; margin-top: 50px;">
+          ),url(static/img/washgif3.gif); background-size:cover; background-position:right 35% bottom 75%; margin-top: 50px;">
         <h1 style="margin-top: 200px; text-align: left; color: white; font-size: 30px; font-weight: bold;">사람을 움직이는 수단에서
         </h1>
         <h1 style="text-align: left; color: white; font-size: 30px; font-weight: bold;">마음을 정화하는 공간으로</h1><br>
         <p style="text-align: left; color: white; font-size: 15px; font-weight: bold;">세차라는 간단한 방법을 통해<br>
             내 첫인상을 바꿔보세요</p>
+        <a class="scrollbtnbumo" href="#services"><img class="scrollbtn" src="static/img/btn_bottom2.png" alt=""></a>
     </div>
-    <div class="container">
-        <div style="margin-top: 20px;" class="container overflow-hidden">
-            <div class="middlelogo"><img class="middlelogoimg" src="static/img/informationicon.png" alt="">
-                <p
-                    style="font-size: 40px; text-shadow: 4px 4px 0px gray; font-weight: bold; color:rgba(255, 255, 0, 0.815);">
-                    유용한 기능</p>
-            </div>
-            <div class="row gy-5 cardmoim">
-                <div class="col-6">
-                    <div class="p-0 border:none"><img class="functioninfo" src="static/img/searchimg.jpg" alt=""></div>
-                    <p class="mainname">검색 > 세차장
-                    <p class="subname">전국 세차장 검색하기</p>
-                    </p>
+    <div id="services">
+        <div class="container">
+            <div style="margin-top: 20px;" class="container overflow-hidden">
+                <div class="middlelogo"><img class="middlelogoimg" src="static/img/informationicon.png" alt="">
+                    <p
+                        style="font-size: 40px; text-shadow: 2px 2px 0px gray; font-weight: bold; color:rgba(255, 255, 0, 0.815);">
+                        유용한 기능</p>
                 </div>
-                <div class="col-6">
-                    <div class="p-0 border:none;"><img class="functioninfo" src="static/img/rankingimg.jpg" alt="">
+
+                <div class="row gx-5 cardmoim" style="overflow: hidden;">
+                    <div class="col">
+                        <div class="p-0 border:none">
+                            <a href=""><img class="functioninfo" src="static/img/searchimg.jpg" alt=""></a>
+                        </div>
+                        <p class="mainname">검색 > 세차장
+                        <p class="subname">전국 세차장 검색하기</p>
+                        </p>
+
                     </div>
-                    <p class="mainname">조회 > 랭킹
-                    <p class="subname">전국 세차장 랭킹 조회하기</p>
-                    </p>
-                </div>
-                <div class="col-6">
-                    <div class="p-0 border:none;"><img class="functioninfo" src="static/img/shopimg.jpg" alt=""></div>
-                    <p class="mainname">구매 > 상점
-                    <p class="subname">세차용품 구매하기</p>
-                    </p>
-                </div>
-                <div class="col-6">
-                    <a href="/club">
-                        <div class="p-0 border;"><img class="functioninfo" src="static/img/clubimg.png" alt=""></div>
-                    </a>
-                    <p class="mainname">조회 > 동호회
-                    <p class="subname">전국 세차 동호회 조회하기</p>
-                    </p>
+
+                    <div class="col">
+                        <div class="p-0 border:none;"><a href=""><img class="functioninfo"
+                                    src="static/img/rankingimg.jpg" alt=""></a>
+                        </div>
+                        <p class="mainname">조회 > 랭킹
+                        <p class="subname">전국 세차장 랭킹 조회하기</p>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <div class="p-0 border:none;"><a href=""><img class="functioninfo" src="static/img/shopimg.jpg"
+                                    alt=""></a></div>
+                        <p class="mainname">구매 > 상점
+                        <p class="subname">세차용품 구매하기</p>
+                        </p>
+                    </div>
+                    <div class="col">
+                        <div class="p-0 border;"><a href="/club"><img class="functioninfo" src="static/img/clubimg.png"
+                                    alt=""></a></div>
+                        <p class="mainname">조회 > 동호회
+                        <p class="subname">전국 세차 동호회 조회하기</p>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -317,6 +371,27 @@
             $("#menu").removeClass("open");
             $("#chat_btn").removeClass("chat_btn");
         });
+
+
+        // 화살표 클릭시 페이지 슬라이드 다운
+        $(document).ready(function () {
+            $('a[href^="#"]').on('click', function (e) {
+                e.preventDefault();
+
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 900, 'swing', function () {
+                    window.location.hash = target;
+                });
+            });
+        });
+
+
+
+
     </script>
 
 </body>
