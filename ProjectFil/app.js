@@ -90,8 +90,10 @@ app.get("/clubdetail1", (req, res) => {
 app.get("/search", (req, res) => {
     let ranking_index = { "서울특별시": [], "부산광역시": [], "대구광역시": [], "인천광역시": [], "울산광역시": [], "대전광역시": [] }
     let rating = {};
+    const fs1=require('fs')
     for (let index = 0; index < region.length; index++) {
         let file = JSON.parse(fs1.readFileSync(`./data/ranking_${region[index]}.json`));
+        console.log(file[0])
         for (let i = 0; i < file.length; i++) {
 
             ranking_index[region[index]].push(i);
@@ -103,12 +105,19 @@ app.get("/search", (req, res) => {
     for (let index = 0; index < region.length; index++) {
         let file = JSON.parse(fs1.readFileSync(`./data/ranking_${region[index]}.json`));
         let file2 = JSON.parse(fs1.readFileSync(`./data/carwash_${region[index]}.json`));
+        rating[region[index]] = file;
         // console.log(file2.length)
         for (let i = 0; i < file2.length; i++) {
             car_washer_name[region[index]].push(file2[i]);
         }
     }
-    console.log('get',rating["서울특별시"]);
+    console.log("get",rating["서울특별시"]);
+    for(let i=0;i<region.length;i++){
+        rating[region[i]].sort(function(a,b){
+            return b.like - a.like;
+        })
+    }
+    console.log("get",rating["서울특별시"]);
     res.render("search", { region: region, rating: rating, car_washer_name: car_washer_name, ranking_index: ranking_index });
 })
 app.post('/post', function (req, res) {
