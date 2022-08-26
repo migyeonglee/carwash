@@ -16,18 +16,17 @@
 
 <style>
     @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
     @font-face {
         font-family: 'NEXON Lv1 Gothic OTF';
         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
-
+    
     * {
         font-family: "NEXON Lv1 Gothic OTF";
     }
-
+    
     .make_center {
         display: flex;
         align-items: center;
@@ -35,8 +34,7 @@
         flex-direction: column;
         font-family: "Helvetica";
     }
-
-
+    
     #chat_btn {
         position: fixed;
         right: 50px;
@@ -44,15 +42,15 @@
         width: 50px;
         height: 50px;
     }
-
+    
     .chat_btn {
         display: none;
     }
-
+    
     #chat_btn:hover {
         cursor: pointer;
     }
-
+    
     .close {
         width: 50px;
         height: 50px;
@@ -66,7 +64,7 @@
         background-position: center;
         cursor: pointer;
     }
-
+    
     #menu {
         width: 350px;
         height: 100%;
@@ -82,41 +80,37 @@
         -moz-transition: All 0.2s ease;
         -o-transition: All 0.2s ease;
     }
-
+    
     #menu.open {
         right: 0px;
     }
-
+    
     .table_div {
         max-height: 500px;
         overflow-y: scroll;
         width: 100%;
     }
-
+    
     .top_rating_div {
         width: 100%;
         height: 500px;
-
         align-items: flex-end;
-
     }
-
+    
     .top_rating_div_element {
         display: flex;
         align-items: center;
         flex-direction: column;
-
     }
-
+    
     .height {
         height: 100%;
     }
-
+    
     .ele {
         position: absolute;
         bottom: 0;
     }
-
     /* @media (min-width: 768px) {
         .container {
             width: 750px;
@@ -128,14 +122,13 @@
             width: 940px;
         }
     } */
-
     /*사실 이 블럭은 없어도 된다*/
     /* @media (min-width: 1200px) {
         .container {
             width: 1200px;
         }
     } */
-
+    
     .feedback_box {
         width: 100%;
         height: 300px;
@@ -148,7 +141,7 @@
         flex-direction: column;
         position: relative;
     }
-
+    
     .check_box {
         width: 100%;
         height: 150px;
@@ -159,10 +152,8 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-
-
     }
-
+    
     .w-btn {
         position: relative;
         border: none;
@@ -175,23 +166,23 @@
         font-weight: 600;
         transition: 0.25s;
     }
-
+    
     .w-btn:hover {
         background-color: gray;
         color: white;
     }
-
+    
     .w-btn-indigo {
         background-color: gainsboro;
         color: black;
     }
-
+    
     .select_bar {
         display: flex;
         width: 100%;
         margin-bottom: 10px;
     }
-
+    
     .select_bar1 {
         width: 100%;
         border: 0;
@@ -199,7 +190,7 @@
         box-shadow: 0px 0px 5px gray;
         margin-bottom: 10px
     }
-
+    
     .select_local {
         display: flex;
         justify-content: center;
@@ -208,7 +199,7 @@
         font-size: large;
         margin-bottom: 10px;
     }
-
+    
     .table_bar {
         width: 100%;
         border-radius: 5px;
@@ -217,12 +208,12 @@
         background-color: gray;
         color: white
     }
-
+    
     .ranking_div {
         width: 100%;
         height: 500px;
     }
-
+    
     .ranking_div_mini {
         position: absolute;
         border-radius: 5px;
@@ -235,7 +226,7 @@
         justify-content: center;
         flex-direction: column;
     }
-
+    
     .cup_pos {
         position: absolute;
         width: 40px;
@@ -245,18 +236,16 @@
         background-color: #ebebeb;
         top: -20px;
     }
-
-
+    
     #selct_feedback1 {
         display: none;
     }
-
+    
     .page_name {
         height: 40px;
         display: flex;
-
     }
-
+    
     @media screen and (min-width: 990px) {
         .table_bar div {
             width: 100%;
@@ -268,7 +257,7 @@
             font-size: 20px;
         }
     }
-
+    
     @media screen and (max-width: 990px) {
         .table_bar div {
             width: 100%;
@@ -280,7 +269,7 @@
             font-size: 15px;
         }
     }
-
+    
     @media screen and (max-width: 768px) {
         .table_bar div {
             width: 100%;
@@ -292,16 +281,19 @@
             font-size: xx-small;
         }
     }
+    
     @media screen and (max-width:720px) {
-        .unnoneblock{
+        .unnoneblock {
             display: none;
         }
     }
+    
     @media screen and (max-width:320px) {
-        *{
+        * {
             display: none;
         }
     }
+    
     .s {
         position: absolute;
         left: 40%;
@@ -316,8 +308,7 @@
     <script>
         let selected_val = $('#sel option:selected').val();
     </script>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark"
-        style="position: fixed; top: 0; left: 0; right: 0; z-index: 1;">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="position: fixed; top: 0; left: 0; right: 0; z-index: 99999;">
         <a href="" class="navbar-brand">Foambble Bobble</a>
         <!-- Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -397,8 +388,7 @@
                         제출하기
                     </button>
                     <!-- 모달 영역 -->
-                    <div id="modalBox" class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                        aria-labelledby="myModalLabel">
+                    <div id="modalBox" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -428,8 +418,7 @@
 
             <div class="make_center col-sm-8">
                 <div class="ranking_div" style="position: reletive;">
-                    <div class="ranking_div_mini"
-                        style="z-index:3; top:7%; left:10%;background-image: linear-gradient(to right,#2484fc,#6fa5ec);">
+                    <div class="ranking_div_mini" style="z-index:3; top:7%; left:10%;background-image: linear-gradient(to right,#2484fc,#6fa5ec);">
                         <div class="cup_pos">
                             <img src="/static/img/cup_blue.png" class="card-img-top" alt="...">
                         </div>
@@ -509,8 +498,7 @@
         <div class="close"></div>
         <div class="container">
             <img id="chat_btn" src="/static/img/chatimg.png" alt="">
-            <iframe id="chat" src="https://service.dongledongle.com/carwashchat" frameborder="0" width="100%"
-                height="900vh"></iframe>
+            <iframe id="chat" src="https://service.dongledongle.com/carwashchat" frameborder="0" width="100%" height="900vh"></iframe>
         </div>
     </div>
     <% var aaaaaa=JSON.stringify(car_washer_name)%>
@@ -521,11 +509,11 @@
 
                 <!-- --------------------------------------------------------------------------------------------------------------->
                 <script>
-                    $('#openModalBtn').on('click', function () {
-                        $('#modalBox').modal('show'); 
-                    }); 
-                    $('#closeModalBtn').on('click', function () { 
-                        $('#modalBox').modal('hide'); 
+                    $('#openModalBtn').on('click', function() {
+                        $('#modalBox').modal('show');
+                    });
+                    $('#closeModalBtn').on('click', function() {
+                        $('#modalBox').modal('hide');
                     });
 
                     var c = <%-JSON.stringify(car_washer_name) %>;
@@ -538,7 +526,7 @@
 
                     let local;
                     console.log(r_r);
-                    $("#sel").change(function () {
+                    $("#sel").change(function() {
                         local = $(this).val()
 
                         var html = "";
@@ -571,70 +559,71 @@
                         })
                         $(".card-text").text(`${c[local][r[local][0]]["사업장명"]} 오늘의 최고 goat`)
                     })
-                    $("#selct_feedback").change(function () {
-                        local = $(this).val()
-                        var html = "";
-                        for (let index = 0; index < r_r[local].length; index++) {
-                            html += `<option value="${index}">
+                    $("#selct_feedback").change(function() {
+                            local = $(this).val()
+                            var html = "";
+                            for (let index = 0; index < r_r[local].length; index++) {
+                                html += `<option value="${index}">
                                 ${c[local][r[local][index]]["사업장명"]}
                             </option>`
-                        }
-                        $("#selct_feedback1").html(html)
-                        $("#selct_feedback1").css({
-                            "display": "block"
+                            }
+                            $("#selct_feedback1").html(html)
+                            $("#selct_feedback1").css({
+                                "display": "block"
+                            })
                         })
-                    })
-                    // 버튼 클릭시 우측에서 슬라이드 나오면서 버튼은 사라짐
-                    $('.post_submit').click(function () {
+                        // 버튼 클릭시 우측에서 슬라이드 나오면서 버튼은 사라짐
+                    $('.post_submit').click(function() {
                         // getter
                         var radioVal = $('input[name="flexRadioDefault"]:checked').val();
-                        let take_local=$("#selct_feedback").val();
-                        let take_carwash_val=$("#selct_feedback1").val();
-                        if(radioVal==="like"){
-                            for(let i=0;i<r_r[take_local].length;i++){
-                                if(r_r[take_local][i]["index"]==take_carwash_val){
+                        let take_local = $("#selct_feedback").val();
+                        let take_carwash_val = $("#selct_feedback1").val();
+                        if (radioVal === "like") {
+                            for (let i = 0; i < r_r[take_local].length; i++) {
+                                if (r_r[take_local][i]["index"] == take_carwash_val) {
                                     r_r[take_local][i]["like"]++;
                                 }
                             }
-                        }
-                        else if(radioVal==="dislike"){
-                            for(let i=0;i<r_r[take_local].length;i++){
-                                if(r_r[take_local][i]["index"]==take_carwash_val){
+                        } else if (radioVal === "dislike") {
+                            for (let i = 0; i < r_r[take_local].length; i++) {
+                                if (r_r[take_local][i]["index"] == take_carwash_val) {
                                     r_r[take_local][i]["dislike"]++;
                                 }
                             }
                         }
                         console.log(JSON.stringify(r_r));
-                        
-                        if(radioVal!=undefined){
-                            let valualble=JSON.stringify(r_r)
+
+                        if (radioVal != undefined) {
+                            let valualble = JSON.stringify(r_r)
                             $.ajax({
                                 url: '/post',
-                                dataType:'json',
+                                dataType: 'json',
                                 type: 'POST',
-                                data: {data:valualble},
+                                data: {
+                                    data: valualble
+                                },
                                 success: function(result) {
                                     console.log(result)
-                               },
-                               error: (log)=>{
-                                console.log(JSON.stringify(log));
-                               }
-                               
+                                },
+                                error: (log) => {
+                                    console.log(JSON.stringify(log));
+                                }
+
                             });
                         }
 
-                      });
-                    $("#chat_btn").click(function () {
+                    });
+                    $("#chat_btn").click(function() {
                         $("#menu").addClass("open");
                         $("#chat_btn").addClass("chat_btn");
-                        
+
                     });
                     // X버튼 클릭시 슬라이드 들어가면서 버튼은 생성됨
-                    $(".close").click(function () {
+                    $(".close").click(function() {
                         $("#menu").removeClass("open");
                         $("#chat_btn").removeClass("chat_btn");
                     });
-        //값선택
+                    //값선택
                 </script>
 
 </body>

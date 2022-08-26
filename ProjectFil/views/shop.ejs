@@ -16,24 +16,15 @@
     <script type="text/javascript" src="/js/twbs-pagination/jquery.twbsPagination.js"></script>
     <title>shop-HOME</title>
     <style>
-        /* 해피니스 산스 title */
-        
         @font-face {
-            font-family: 'Happiness-Sans-Title';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+            font-family: 'GongGothicMedium';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
-        /*         
-        @font-face {
-            font-family: 'Happiness-Sans-Bold';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        } */
         
         * {
-            font-family: 'Happiness-Sans-Title';
+            font-family: 'GongGothicMedium';
             font-weight: normal;
             font-style: normal;
             margin: 0;
@@ -120,19 +111,19 @@
         }
         
         .col-4 {
-            box-shadow: 0px 0px 5px gainsboro;
             border-radius: 5px;
             width: 200px;
             height: 300px;
             margin: 20px 20px 40px 20px;
+            align-items: center;
         }
         
         .col-4>a>img {
             box-shadow: 0px 0px 5px gainsboro;
-            margin-top: 10px;
+            margin-top: 10px 0 20px 0;
             align-items: center;
-            width: 170px;
-            height: 170px;
+            width: 200px;
+            height: 180px;
         }
         
         .col-4>a>p {
@@ -351,6 +342,7 @@
                         <div class=" col-4">
                             <a href="/shop_item?img=<%=sn[i].item_img%>&name=<%=sn[i].name%>&price=<%=sn[i].price%>&infor=<%=sn[i].infor_img%>" style="text-decoration: none;">
                                     <img src="<%=sn[i].item_img %>" alt="">
+                                    <hr>
                                         <p class="itemName">
                                             <%=sn[i].name%>
                                         </p>

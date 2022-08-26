@@ -30,11 +30,11 @@
             font-style: normal;
         }
         /* @font-face {
-    font-family: 'Happiness-Sans-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-} */
+           font-family: 'Happiness-Sans-Bold';
+           src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Bold.woff2') format('woff2');
+           font-weight: 700;
+           font-style: normal;
+        } */
         
         * {
             font-family: 'Happiness-Sans-Title';
@@ -78,22 +78,36 @@
         /* order*/
         
         .item_center>h1 {
-            margin: 20px 0px 0px 20px;
-            width: 400px;
+            margin-top: 20px;
+            padding-left: 20px;
+            width: 100%;
+            height: 50px;
+            align-items: center;
+        }
+        
+        .item_center {
+            display: flex;
+            flex-direction: column;
         }
         /* orderImg*/
         
         .shop-item {
             height: 400px;
         }
-        
-        .shop-item-in>img {
-            width: 650px;
-            height: 300px;
-        }
         /* itemEx */
         
-        .shop_item_in>img,
+        @media screen and (max-width:850px) {
+            .shop_item_in {
+                flex-direction: column;
+            }
+        }
+        
+        .shop_item_in {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+        
         .item_price {
             display: flex;
             justify-content: center;
@@ -103,10 +117,11 @@
         }
         
         .shop_item_in>img {
-            width: 650px;
-            height: 400px;
+            justify-content: center;
+            margin: 50px 0 20px 20px;
+            width: 480px;
+            height: 500px;
             box-shadow: 0px 0px 5px gainsboro;
-            margin-bottom: 20px;
         }
         
         .shop_item_in>img:hover {
@@ -115,8 +130,9 @@
         
         .shop_item_paper {
             display: block;
-            width: 650px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
+            margin: 50px 0 20px 10px;
             box-shadow: 0px 0px 2px rgb(167, 164, 164);
             border-radius: 5px;
         }
@@ -138,28 +154,31 @@
         }
         
         .shop_item_Ex {
-            margin: 30px 50px;
-            box-shadow: 0px 0px 5px gainsboro;
-            width: 50%;
-            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            width: 100%;
         }
         
         .shop_item_Ex>img {
-            width: 100%;
+            margin-left: 20px;
+            width: 1000px;
             height: 100%;
-        }
-        
-        .item_center {
-            flex-direction: column;
+            box-shadow: 0px 0px 5px gainsboro;
         }
         /* paperDrop */
         
         .dropdown,
-        .dropdown>a,
-        .dropdown-menu>li {
+        .dropdown>a {
             width: 300px;
             height: 30px;
             white-space: normal;
+            cursor: pointer;
+        }
+        
+        .dropdown-menu>li {
+            width: auto;
         }
         
         .dropdown-toggle {
@@ -174,11 +193,35 @@
         
         #hide {
             display: none;
-            justify-content: space-between;
         }
         
-        #hide>span {
+        #count {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        #count>input {
+            padding: 0 10px;
+        }
+        
+        #gume {
+            margin: 10px 0 0 10px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        #sum {
             color: red;
+        }
+        
+        #resultmain,
+        #resultsub {
+            border: 1px solid black;
+            margin: 0;
+            padding: 1px 10px;
         }
         
         .button_ds {
@@ -191,6 +234,7 @@
         .divIn {
             display: flex;
             justify-content: end;
+            padding-bottom: 20px;
         }
         
         .cart {
@@ -210,6 +254,11 @@
             align-items: flex-start;
             justify-content: center;
         }
+        
+        .modal-footer {
+            margin-top: 30px;
+        }
+        /* footer */
     </style>
 </head>
 
@@ -232,7 +281,7 @@
     <!-- order -->
     <div class="item_center">
         <h1>CarWash SHOP<img src="/static/img/shopping-cart.png"></h1>
-        <div class="shop_item_in">
+        <div class="shop_item_in container">
             <img src="<%=data.img%>" alt="">
             <!-- itemEx -->
             <div class="shop_item_paper">
@@ -268,45 +317,46 @@
                     <br>
                     <div class="itemPick">
                         <div id="hide">
-                            <hr>
-                            <%=data.name%>
-                                <input type="button" onclick="count('plus')" value="+">
-                                <span id="result">1</span>
-                                <input type="button" onclick="count('minus')" value="-">
-                                <span><%=data.price%></span>
-                                <hr>
+                            <div id="gume">
+                                <%=data.name%>
+                                    <div id="count">
+                                        <input type="button" onclick="countmain('plus')" value="+">
+                                        <span class="ct" id="resultmain">1</span>
+                                        <input type="button" onclick="countmain('minus')" value="-">
+                                    </div>
+                                    <span class="price" id="sum"><%=data.price%></span>
+                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="divIn">
-                        <!-- Button trigger modal -->
-                        <button class="button_ds" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">구매하기</button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">장바구니</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="cart">
-                                            <img src=<%=data.img%> alt="">
-                                            <span><%=data.name%></span>
-                                            <span>
-                                                <input type="button" onclick="count('plus')" value="+">
-                                                <span id="result">1</span>
-                                            <input type="button" onclick="count('minus')" value="-">
-                                            </span>
-                                            <span><%=data.price%></span>
+                        <br>
+                        <div class="divIn">
+                            <!-- Button trigger modal -->
+                            <button class="button_ds" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">구매하기</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">장바구니</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                    </div>
-                                    <br>
-                                    <hr>
+                                        <div class="modal-body">
+                                            <div class="cart">
+                                                <img src=<%=data.img%> alt="">
+                                                <span><%=data.name%></span>
+                                                <span id="sum"><%=data.price%></span>
+                                                <span id="count">
+                                                    <input type="button" onclick="countsub('plus')" value="+">
+                                                    <span class="ct" id="resultsub">1</span>
+                                                <input type="button" onclick="countsub('minus')" value="-">
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <br>
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="Swal.fire('구매완료!!! 감사합니다 :&#41;')">구매하기</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="Swal.fire('구매완료!!! 감사합니다 :&#41;')">구매하기</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -315,48 +365,92 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="shop_item_Ex">
-        <img src="<%=data.infor%>" alt="">
-    </div>
-    <!-- alerts -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+        <div class="shop_item_Ex">
+            <img src="<%=data.infor%>" alt="">
+        </div>
+        <!-- alerts -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="jumbotron text-center mt-5 mb-0">
 
-    <script>
-        function count(type) {
-            // 결과를 표시할 element
-            const resultElement = document.getElementById('result');
+            <h3 class="text-secondary">Foambble Bobble</h3>
+            <p>Foambble Bobble Homepage is Designed by <span class="text-primary">6 group</span></p>
 
-            // 현재 화면에 표시된 값
-            let number = resultElement.innerText;
+        </div>
+        <script>
+            function countmain(type) {
+                // 결과를 표시할 element
+                const resultElement = document.getElementById('resultmain');
 
-            // 더하기/빼기
-            if (type === 'plus') {
-                number = parseInt(number) + 1;
-            } else if (type === 'minus') {
-                number = parseInt(number) - 1;
+                // 현재 화면에 표시된 값
+                let number = resultElement.innerText;
+
+                // 더하기/빼기
+                if (type === 'plus') {
+                    number = parseInt(number) + 1;
+                } else if (type === 'minus') {
+                    number = parseInt(number) - 1;
+                }
+
+                // 결과 출력
+                resultElement.innerText = number;
             }
 
-            // 결과 출력
-            resultElement.innerText = number;
-        }
-    </script>
+            function countsub(type) {
+                // 결과를 표시할 element
+                const resultElement = document.getElementById('resultsub');
+
+                // 현재 화면에 표시된 값
+                let number = resultElement.innerText;
+
+                // 더하기/빼기
+                if (type === 'plus') {
+                    number = parseInt(number) + 1;
+                } else if (type === 'minus') {
+                    number = parseInt(number) - 1;
+
+                }
+                // 결과 출력
+                resultElement.innerText = number;
+            }
+
+            // 가격 계산 
+            var totalPrice = 0;
+            var price = 0;
+            var total = 0;
+
+            function stringNumberToInt(s) {
+                return parseInt(s.replace(/,/g, ""));
+            }
+            price = stringNumberToInt($("#sum").text());
+            total = Number($("#resultmain").text());
+            $(function() {
+                $(input).on('click', function() {
+
+                    totalPrice = price * total;
+                    // $("#sum").text = (totalPrice);
+                });
+            });
+
+            console.log(price)
+            console.log(total)
+            console.log(totalPrice);
+        </script>
 </body>
 
 </html>
