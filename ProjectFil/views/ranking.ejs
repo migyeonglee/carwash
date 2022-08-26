@@ -17,15 +17,21 @@
 <style>
     @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-    @font-face {
+    /*@font-face {
         font-family: 'NEXON Lv1 Gothic OTF';
         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }*/
+    @font-face {
+        font-family: 'paybooc-Bold';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
 
     * {
-        font-family: "NEXON Lv1 Gothic OTF";
+        font-family: 'paybooc-Bold';
     }
 
     .make_center {
@@ -317,8 +323,8 @@
         let selected_val = $('#sel option:selected').val();
     </script>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark"
-        style="position: fixed; top: 0; left: 0; right: 0; z-index: 999999;">
-        <a href="" class="navbar-brand">Foambble Bobble</a>
+        style="position: fixed; top: 0; left: 0; right: 0; z-index: 9;">
+        <a href="/" class="navbar-brand">Foambble Bobble</a>
         <!-- Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -406,7 +412,7 @@
                                 </div>
                                 <div class="modal-body"> 성공적으로 피드백을 전달받았습니다! 순위에 반영후 업체측에 피드백을 전달하겠습니다 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary">확인</button>
+                                    <button type="button" class="btn btn-primary" id="closeModalBtn">확인</button>
                                     <button type="button" class="btn btn-default" id="closeModalBtn">취소</button>
                                 </div>
                             </div>
@@ -531,13 +537,13 @@
                     var c = <%-JSON.stringify(car_washer_name) %>;
                     var ranking_index = '<%-aaaaaa1%>';
                     var ranking_rating = '<%-aaaaaa2%>';
-                    console.log($(".card-text"));
+                    //console.log($(".card-text"));
                     //var c = JSON.parse(car_washer_name);
                     var r = JSON.parse(ranking_index);
                     var r_r = JSON.parse(ranking_rating);
 
                     let local;
-                    console.log(r_r);
+                    //console.log(r_r);
                     $("#sel").change(function () {
                         local = $(this).val()
 
@@ -604,7 +610,7 @@
                                 }
                             }
                         }
-                        console.log(JSON.stringify(r_r));
+                        //console.log(JSON.stringify(r_r));
                         
                         if(radioVal!=undefined){
                             let valualble=JSON.stringify(r_r)
