@@ -15,24 +15,17 @@
 </head>
 
 <style>
-    @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+     /* 눈누난나 폰트적용 */
+     @font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-    /*@font-face {
-        font-family: 'NEXON Lv1 Gothic OTF';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }*/
-    @font-face {
-        font-family: 'paybooc-Bold';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    * {
-        font-family: 'paybooc-Bold';
-    }
+* {
+    font-family: 'GongGothicMedium';
+}
 
     .make_center {
         display: flex;
@@ -91,6 +84,10 @@
 
     #menu.open {
         right: 0px;
+    }
+
+    .nav-item {
+        margin-right: 40px;
     }
 
     .table_div {
