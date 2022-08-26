@@ -5,11 +5,14 @@
     <title>Car Wash :: Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+
     <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/79ec480f66.js" crossorigin="anonymous"></script>
@@ -520,9 +523,9 @@
                     <li class="page-item disabled">
                         <a class="page-link"><</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#1" onclick="onClickPage()">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#2" onclick="onClickPage()">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#3" onclick="onClickPage()">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#1" onclick="onClickPage(this)">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#2" onclick="onClickPage(this)">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#3" onclick="onClickPage(this)">3</a></li>
                     <li class="page-item">
                         <a class="page-link" href="#" style="color: gray;">></a>
                     </li>
@@ -795,7 +798,7 @@
             })
 
         })
-        const onClickPage = () => {
+        const onClickPage = (obj) => {
             setTimeout(() => {
                 let pathname = $(location).attr('hash');
                 let local = $("#sel").val();
