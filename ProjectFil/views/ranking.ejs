@@ -17,15 +17,21 @@
 <style>
     @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-    @font-face {
+    /*@font-face {
         font-family: 'NEXON Lv1 Gothic OTF';
         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }*/
+    @font-face {
+        font-family: 'paybooc-Bold';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
         font-weight: normal;
         font-style: normal;
     }
 
     * {
-        font-family: "NEXON Lv1 Gothic OTF";
+        font-family: 'paybooc-Bold';
     }
 
     .make_center {
@@ -318,7 +324,7 @@
     </script>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark"
         style="position: fixed; top: 0; left: 0; right: 0; z-index: 9;">
-        <a href="" class="navbar-brand">Foambble Bobble</a>
+        <a href="/" class="navbar-brand">Foambble Bobble</a>
         <!-- Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -531,13 +537,13 @@
                     var c = <%-JSON.stringify(car_washer_name) %>;
                     var ranking_index = '<%-aaaaaa1%>';
                     var ranking_rating = '<%-aaaaaa2%>';
-                    console.log($(".card-text"));
+                    //console.log($(".card-text"));
                     //var c = JSON.parse(car_washer_name);
                     var r = JSON.parse(ranking_index);
                     var r_r = JSON.parse(ranking_rating);
 
                     let local;
-                    console.log(r_r);
+                    //console.log(r_r);
                     $("#sel").change(function () {
                         local = $(this).val()
 
@@ -604,7 +610,7 @@
                                 }
                             }
                         }
-                        console.log(JSON.stringify(r_r));
+                        //console.log(JSON.stringify(r_r));
                         
                         if(radioVal!=undefined){
                             let valualble=JSON.stringify(r_r)
