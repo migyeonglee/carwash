@@ -15,28 +15,20 @@
 </head>
 
 <style>
-    /* 눈누난나 폰트 적용 */
-    /*@font-face {
-        font-family: 'PyeongChangPeace-Light';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Light.woff2') format('woff2');
-        font-weight: 300;
-        font-style: normal;
-    }*/
-    /*@font-face {
-        font-family: 'BMJUA';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }*/
+    /* 눈누난나 폰트적용 */
     @font-face {
-        font-family: 'paybooc-Bold';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-    *{
-        font-family: 'paybooc-Bold';
-    }
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'GongGothicMedium';
+}
+
+
+
     #chat_btn {
         position: fixed;
         right: 50px;
@@ -140,6 +132,7 @@
         margin: auto;
         width: 200px;
         height: 250px;
+        border-radius: 20px;
         object-fit: cover;
         /* border: 1px solid rgba(255, 255, 0, 0.644); */
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -258,7 +251,6 @@
     </nav>
     <!-- header -->
     <div class="jumbotron text-center mb-0"
-    
         style="height: 100vh; background-image: linear-gradient(
             rgba(0, 0, 0, 0.486),
             rgba(0, 0, 0, 0.664)
@@ -275,14 +267,14 @@
             <div style="margin-top: 20px;" class="container overflow-hidden">
                 <div class="middlelogo"><img class="middlelogoimg" src="static/img/informationicon.png" alt="">
                     <p
-                        style="font-size: 40px; text-shadow: 2px 2px 0px gray; font-weight: bold; color:rgba(255, 255, 0, 0.815);">
+                        style="font-size: 40px; text-shadow: 2px 2px 0px gray; color:rgba(0, 68, 255, 0.877);">
                         유용한 기능</p>
                 </div>
 
                 <div class="row gx-5 cardmoim" style="overflow: hidden;">
                     <div class="col">
                         <div class="p-0 border:none">
-                            <a href="/search"><img class="functioninfo" src="static/img/searchimg.jpg" alt=""></a>
+                            <a href="/search"><img class="functioninfo" src="static/img/searchimg3.png" alt=""></a>
                         </div>
                         <p class="mainname">검색 > 세차장
                         <p class="subname">전국 세차장 검색하기</p>
@@ -292,21 +284,21 @@
 
                     <div class="col">
                         <div class="p-0 border:none;"><a href="/ranking"><img class="functioninfo"
-                                    src="static/img/rankingimg.jpg" alt=""></a>
+                                    src="static/img/rankingimg5.png" alt=""></a>
                         </div>
                         <p class="mainname">조회 > 랭킹
                         <p class="subname">전국 세차장 랭킹 조회하기</p>
                         </p>
                     </div>
                     <div class="col">
-                        <div class="p-0 border:none;"><a href="/shop"><img class="functioninfo" src="static/img/shopimg.jpg"
+                        <div class="p-0 border:none;"><a href="/shop"><img class="functioninfo" src="static/img/shopimg2.png"
                                     alt=""></a></div>
                         <p class="mainname">구매 > 상점
                         <p class="subname">세차용품 구매하기</p>
                         </p>
                     </div>
                     <div class="col">
-                        <div class="p-0 border;"><a href="/club"><img class="functioninfo" src="static/img/clubimg.png"
+                        <div class="p-0 border;"><a href="/club"><img class="functioninfo" src="static/img/clubimg3.png"
                                     alt=""></a></div>
                         <p class="mainname">조회 > 동호회
                         <p class="subname">전국 세차 동호회 조회하기</p>
