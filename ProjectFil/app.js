@@ -1,4 +1,3 @@
-
 const { Router } = require("express");
 const express = require("express");
 const app = express();
@@ -63,7 +62,7 @@ app.get("/shop_item", (req, res) => {
 app.get("/ranking", (req, res) => {
     let ranking_index = { "서울특별시": [], "부산광역시": [], "대구광역시": [], "인천광역시": [], "울산광역시": [], "대전광역시": [] }
     let rating = {};
-    const fs1=require('fs')
+    const fs1 = require('fs')
     for (let index = 0; index < region.length; index++) {
         let file = JSON.parse(fs1.readFileSync(`./data/ranking_${region[index]}.json`));
         //console.log(file[0])
@@ -98,8 +97,7 @@ app.get("/ranking", (req, res) => {
 app.get("/club", (req, res) => {
 
 
-    var clubdetail1 = [
-        {
+    var clubdetail1 = [{
             name: "세린이즈",
             subname: "세린이들의 모임!",
             main_img: "/static/img/carwash_clubimg1.jpg",
@@ -222,7 +220,7 @@ app.get("/clubdetail1", (req, res) => {
 app.get("/search", (req, res) => {
     let ranking_index = { "서울특별시": [], "부산광역시": [], "대구광역시": [], "인천광역시": [], "울산광역시": [], "대전광역시": [] }
     let rating = {};
-    const fs1=require('fs')
+    const fs1 = require('fs')
     for (let index = 0; index < region.length; index++) {
         let file = JSON.parse(fs1.readFileSync(`./data/ranking_${region[index]}.json`));
         //console.log(file[0])
@@ -245,28 +243,30 @@ app.get("/search", (req, res) => {
     }
     //console.log("get",rating["서울특별시"]);
     //console.log("get",rating["서울특별시"]);
+
     res.render("search", { region: region, rating: rating, car_washer_name: car_washer_name, ranking_index: ranking_index });
 
 })
-app.post('/post', function (req, res) {
+app.post('/post', function(req, res) {
 
     //console.log(req.body)
     let data = req.body.data;
 
+
     //console.log('post',JSON.parse(data)["서울특별시"]);
+
     let real_data = JSON.parse(data);
     // console.log(real_data["서울특별시"]);
     let fs = require("fs")
     for (let index = 0; index < region.length; index++) {
-        fs.writeFileSync(`./data/ranking_${region[index]}.json`, JSON.stringify(real_data[region[index]]), function (err) {
+        fs.writeFileSync(`./data/ranking_${region[index]}.json`, JSON.stringify(real_data[region[index]]), function(err) {
             if (err) throw err;
             console.log('complete');
-        }
-        );
-        
+        });
+
     }
 
-    
+
     var result = ' Succese';
     res.send({ result: result });
 
