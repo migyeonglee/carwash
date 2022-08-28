@@ -78,8 +78,8 @@
         /* order*/
         
         .item_center>h1 {
-            margin-top: 20px;
-            padding-left: 20px;
+            margin-top: 25px;
+            padding-left: 30px;
             width: 100%;
             height: 50px;
             align-items: center;
@@ -98,6 +98,9 @@
         
         @media screen and (max-width:850px) {
             .shop_item_in {
+                flex-direction: column;
+            }
+            #drop {
                 flex-direction: column;
             }
         }
@@ -213,7 +216,8 @@
             align-items: center;
         }
         
-        #sum {
+        #sumM,
+        #sumS {
             color: red;
         }
         
@@ -235,6 +239,23 @@
             display: flex;
             justify-content: end;
             padding-bottom: 20px;
+        }
+        /* 제품 정보 */
+        
+        .item_information {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid gainsboro;
+        }
+        
+        .item_information>li {
+            margin-top: 20px;
+            margin-bottom: -3px;
+            padding: 10px 20px;
+            border: 1px solid gray;
+            border-bottom: 1px solid white;
+            border-radius: 5px;
         }
         
         .cart {
@@ -258,7 +279,82 @@
         .modal-footer {
             margin-top: 30px;
         }
+        /* 채팅기능 css */
+        
+        #chat_btn {
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            width: 50px;
+            height: 50px;
+        }
+        /* #chat {
+            display: block;
+            top: 0;
+            left: 0;
+            height: 840px;
+        } */
+        
+        .chat_btn {
+            display: none;
+        }
+        
+        #chat_btn:hover {
+            cursor: pointer;
+        }
+        
+        .close {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 35px;
+            top: -5px;
+            z-index: 1;
+            background-image: url("https://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/close.png");
+            background-size: 50%;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+        
+        #menu {
+            width: 350px;
+            height: 100vh;
+            position: fixed;
+            top: 0px;
+            right: -352px;
+            z-index: 10;
+            border: 1px solid #c9c9c9;
+            background-color: white;
+            text-align: center;
+            transition: All 0.2s ease;
+            -webkit-transition: All 0.2s ease;
+            -moz-transition: All 0.2s ease;
+            -o-transition: All 0.2s ease;
+            overflow: scroll;
+        }
+        
+        #menu {
+            -ms-overflow-style: none;
+        }
+        
+        #menu::-webkit-scrollbar {
+            display: none;
+        }
+        
+        #menu.open {
+            right: 0px;
+        }
         /* footer */
+        
+        .jumbotron {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 0;
+            padding: 4rem 2rem;
+            background-color: #e9ecef;
+            border-radius: 0.3rem;
+        }
     </style>
 </head>
 
@@ -324,7 +420,7 @@
                                         <span class="ct" id="resultmain">1</span>
                                         <input type="button" onclick="countmain('minus')" value="-">
                                     </div>
-                                    <span class="price" id="sum"><%=data.price%></span>
+                                    <span class="price" id="sumM"><%=data.price%></span>
                             </div>
                         </div>
                         <br>
@@ -343,7 +439,7 @@
                                             <div class="cart">
                                                 <img src=<%=data.img%> alt="">
                                                 <span><%=data.name%></span>
-                                                <span id="sum"><%=data.price%></span>
+                                                <span id="sumS"><%=data.price%></span>
                                                 <span id="count">
                                                     <input type="button" onclick="countsub('plus')" value="+">
                                                     <span class="ct" id="resultsub">1</span>
@@ -365,92 +461,102 @@
                 </div>
             </div>
         </div>
+        <ul class="item_information">
+            <li href=".shop_item_Ex">제품 상세 정보</li>
+        </ul>
         <div class="shop_item_Ex">
             <img src="<%=data.infor%>" alt="">
         </div>
-        <!-- alerts -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
+        <!--chat -->
+        <div id="menu">
+            <div class="close"></div>
+            <div class="container">
+                <img id="chat_btn" src="/static/img/chatimg.png" alt="">
+                <iframe id="chat" src="https://service.dongledongle.com/carwashchat" frameborder="0" width="100%" height="900vh"></iframe>
             </div>
         </div>
-        <div class="jumbotron text-center mt-5 mb-0">
+    </div>
+    <!-- footer -->
+    <div class="jumbotron">
+        <h3 class="text-secondary">Foambble Bobble</h3>
+        <p>Foambble Bobble Homepage is Designed by <span class="text-primary">6 group</span></p>
 
-            <h3 class="text-secondary">Foambble Bobble</h3>
-            <p>Foambble Bobble Homepage is Designed by <span class="text-primary">6 group</span></p>
+    </div>
+    <script>
+        function countmain(type) {
+            // 결과를 표시할 element
+            const resultElement = document.getElementById('resultmain');
 
-        </div>
-        <script>
-            function countmain(type) {
-                // 결과를 표시할 element
-                const resultElement = document.getElementById('resultmain');
+            // 현재 화면에 표시된 값
+            let number = resultElement.innerText;
 
-                // 현재 화면에 표시된 값
-                let number = resultElement.innerText;
-
-                // 더하기/빼기
-                if (type === 'plus') {
-                    number = parseInt(number) + 1;
-                } else if (type === 'minus') {
-                    number = parseInt(number) - 1;
-                }
-
-                // 결과 출력
-                resultElement.innerText = number;
+            // 더하기/빼기
+            if (type === 'plus') {
+                number = parseInt(number) + 1;
+            } else if (type === 'minus') {
+                number = parseInt(number) - 1;
             }
 
-            function countsub(type) {
-                // 결과를 표시할 element
-                const resultElement = document.getElementById('resultsub');
+            // 결과 출력
+            resultElement.innerText = number;
+        }
 
-                // 현재 화면에 표시된 값
-                let number = resultElement.innerText;
+        function countsub(type) {
+            // 결과를 표시할 element
+            const resultElement = document.getElementById('resultsub');
 
-                // 더하기/빼기
-                if (type === 'plus') {
-                    number = parseInt(number) + 1;
-                } else if (type === 'minus') {
-                    number = parseInt(number) - 1;
+            // 현재 화면에 표시된 값
+            let number = resultElement.innerText;
 
-                }
-                // 결과 출력
-                resultElement.innerText = number;
+            // 더하기/빼기
+            if (type === 'plus') {
+                number = parseInt(number) + 1;
+            } else if (type === 'minus') {
+                number = parseInt(number) - 1;
+
             }
+            // 결과 출력
+            resultElement.innerText = number;
+        }
 
-            // 가격 계산 
-            var totalPrice = 0;
-            var price = 0;
-            var total = 0;
-
-            function stringNumberToInt(s) {
-                return parseInt(s.replace(/,/g, ""));
-            }
-            price = stringNumberToInt($("#sum").text());
-            total = Number($("#resultmain").text());
-            $(function() {
-                $(input).on('click', function() {
-
-                    totalPrice = price * total;
-                    // $("#sum").text = (totalPrice);
-                });
+        // 가격 계산 
+        var totalPriceM = 0;
+        var totalPriceS = 0;
+        var price = 0;
+        var totalmain = 0;
+        var totalsub = 0;
+        // comma remove
+        function stringNumberToInt(s) {
+            return parseInt(s.replace(/,/g, ""));
+        }
+        price = stringNumberToInt($("#sumM").text());
+        price = stringNumberToInt($("#sumS").text());
+        $(function() {
+            $("input").on('click', function() {
+                totalmain = Number($("#resultmain").text());
+                totalsub = Number($("#resultsub").text());
+                totalPriceM = price * totalmain;
+                totalPriceS = price * totalsub;
+                // comma add
+                totalPriceM = totalPriceM.toLocaleString("ko-KR");
+                totalPriceS = totalPriceS.toLocaleString("ko-KR");
+                $("#sumM").text(totalPriceM);
+                $("#sumS").text(totalPriceS);
             });
+        });
+        // 채팅
+        // 버튼 클릭시 우측에서 슬라이드 나오면서 버튼은 사라짐
+        $("#chat_btn").click(function() {
+            $("#menu").addClass("open");
+            $("#chat_btn").addClass("chat_btn");
 
-            console.log(price)
-            console.log(total)
-            console.log(totalPrice);
-        </script>
+        });
+        // X버튼 클릭시 슬라이드 들어가면서 버튼은 생성됨
+        $(".close").click(function() {
+            $("#menu").removeClass("open");
+            $("#chat_btn").removeClass("chat_btn");
+        });
+    </script>
 </body>
 
 </html>
