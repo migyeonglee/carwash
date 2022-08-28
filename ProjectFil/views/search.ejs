@@ -5,29 +5,31 @@
     <title>Car Wash :: Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+
     <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/79ec480f66.js" crossorigin="anonymous"></script>
 </head>
 
 <style>
-    @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+    /* 눈누난나 폰트적용 */
     @font-face {
-        font-family: 'NEXON Lv1 Gothic OTF';
-        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-    * {
-        font-family: "NEXON Lv1 Gothic OTF";
-    }
+* {
+    font-family: 'GongGothicMedium';
+}
 
     .table_div {
         max-height: 500px;
@@ -91,6 +93,10 @@
 
     #menu.open {
         right: 0px;
+    }
+
+    .nav-item {
+        margin-right: 40px;
     }
 
 
@@ -388,6 +394,58 @@
         position: absolute;
         right: 0;
     }
+    /* 페이징*/
+        
+    .table_nav_bar ul {
+        padding: 0;
+        list-style: none;
+        text-align: center;
+        margin-left: 10px;
+    }
+    
+    .table_nav_bar li {
+        display: inline-block;
+        margin: 2px;
+    }
+    
+    .table_nav_bar li a,
+    .table_nav_bar li span {
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #fff;
+        text-align: center;
+        text-decoration: none;
+        color: #252525;
+        border-radius: 4px;
+        margin: 5px;
+        box-shadow: inset 0 5px 10px rgba(0, 0, 0, .1), 0 2px 5px rgba(0, 0, 0, .5);
+        transition: all 1s ease;
+    }
+    
+    .table_nav_bar li a:hover {
+        background: #000;
+        color: #fff;
+    }
+    
+    .table_nav_bar .current {
+        color: #fff;
+        background-color: #000;
+        border-color: rgb(255, 255, 255);
+        border: 1px solid;
+        cursor: pointer;
+    }
+    
+    .table_nav_bar .prev.current,
+    .table_nav_bar .next.current {
+        background: #222;
+        border: none;
+    }
+    
+    #myTabContent {
+        color: black;
+    }
 </style>
 
 <body>
@@ -396,8 +454,8 @@
         let selected_val = $('#sel option:selected').val();
     </script>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark"
-        style="position: fixed; top: 0; left: 0; right: 0; z-index: 1;">
-        <a href="" class="navbar-brand">Foambble Bobble</a>
+        style="position: fixed; top: 0; left: 0; right: 0; z-index: 9;">
+        <a href="/" class="navbar-brand">Foambble Bobble</a>
         <!-- Toggle Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -461,19 +519,17 @@
             </div>
         </div>
         <div class="table_nav_bar">
-            <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-end">
                     <li class="page-item disabled">
-                        <a class="page-link">이전</a>
+                        <a class="page-link"><</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#1" onclick="onClickPage()">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#2" onclick="onClickPage()">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#3" onclick="onClickPage()">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#1" onclick="onClickPage(this)">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#2" onclick="onClickPage(this)">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#3" onclick="onClickPage(this)">3</a></li>
                     <li class="page-item">
-                        <a class="page-link" href="#" style="color: gray;">다음</a>
+                        <a class="page-link" href="#" style="color: gray;">></a>
                     </li>
                 </ul>
-            </nav>
         </div>
     </div>
     <!-- footer -->
@@ -499,11 +555,11 @@
         var car_washer_name = <%-JSON.stringify(car_washer_name) %>;
         var ranking_index =<%-JSON.stringify(ranking_index) %>;
         var rating =<%-JSON.stringify(rating) %>;
-        console.log(rating);
+        //console.log(rating);
         const onChangeLocal = (local, index) => {
             let html = ``;
-            console.log(((index - 1) * 11) + 11);
-            console.log(ranking_index[local].length)
+            //console.log(((index - 1) * 11) + 11);
+            //console.log(ranking_index[local].length)
             if (((index - 1) * 11) + 11 >= ranking_index[local].length) {
                 for (let i = (index - 1) * 11; i < ranking_index[local].length; i++) {
                     if (i % 2 == 0) {
@@ -517,9 +573,7 @@
                             <div style="position:reletive;text-align:center ;width:40%">
                                 ${car_washer_name[local][i]["시도명"] + " " + car_washer_name[local][i]["시군구명"]}
                             </div>
-                            <div style="position:reletive;text-align:center; width:20% ">
-                                ${"+"}
-                            </div>
+                            <div class="detailBtn" style="position:reletive;text-align:center; width:20% " onclick="onClickDetail(this)">+</div>
                     </div>
                     <div class="DetailPage" style="background-color: #e8e8e8;">
                         <div class="detailDiv1">
@@ -542,14 +596,14 @@
                                     <div class="small_div" style="width: 30%;">세차장 전화번호</div>
                                     <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["세차장전화번호"]}</div>
                                 </div><div style="height:20%;width:100%;display:flex;">
-                                    <div class="small_div" style="width: 30%;">수질 허가번호</div>
-                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["수질허가번호"]}</div>
+                                    <div class="small_div" style="width: 30%;">사업장업종명</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["사업장업종명"]}</div>
                                 </div><div style="height:20%;width:100%;display:flex;">
-                                    <div class="small_div" style="width: 30%;">위도</div>
-                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["WGS84위도"]}</div>
+                                    <div class="small_div" style="width: 30%;">대표자명</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["대표자명"]}</div>
                                 </div><div style="height:20%;width:100%;display:flex;">
-                                    <div class="small_div1" style="width: 30%;">경도</div>
-                                    <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["WGS84경도"]}</div>
+                                    <div class="small_div1" style="width: 30%;">세차유형</div>
+                                    <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["세차유형"]}</div>
                                 </div>
                             </div>
                         </div>
@@ -567,9 +621,7 @@
                             <div style="position:reletive;text-align:center ;width:40%">
                                 ${car_washer_name[local][i]["시도명"] + " " + car_washer_name[local][i]["시군구명"]}
                             </div>
-                            <div style="position:reletive;text-align:center; width:20% ">
-                                ${"+"}
-                            </div>
+                            <div class="detailBtn" style="position:reletive;text-align:center; width:20% " onclick="onClickDetail(this)">+</div>
                     </div>
                     <div class="DetailPage" style="background-color: #e8e8e8;">
                         <div class="detailDiv1">
@@ -592,14 +644,14 @@
                                     <div class="small_div" style="width: 30%;">세차장 전화번호</div>
                                     <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["세차장전화번호"]}</div>
                                 </div><div style="height:20%;width:100%;display:flex;">
-                                    <div class="small_div" style="width: 30%;">수질 허가번호</div>
-                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["수질허가번호"]}</div>
+                                    <div class="small_div" style="width: 30%;">사업장업종명</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["사업장업종명"]}</div>
                                 </div><div style="height:20%;width:100%;display:flex;">
-                                    <div class="small_div" style="width: 30%;">위도</div>
-                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["WGS84위도"]}</div>
+                                    <div class="small_div" style="width: 30%;">대표자명</div>
+                                    <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["대표자명"]}</div>
                                 </div><div style="height:20%;width:100%;display:flex;">
-                                    <div class="small_div1" style="width: 30%;">경도</div>
-                                    <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["WGS84경도"]}</div>
+                                    <div class="small_div1" style="width: 30%;">세차유형</div>
+                                    <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["세차유형"]}</div>
                                 </div>
                             </div>
                         </div>
@@ -644,14 +696,14 @@
                                         <div class="small_div" style="width: 30%;">세차장 전화번호</div>
                                         <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["세차장전화번호"]}</div>
                                     </div><div style="height:20%;width:100%;display:flex;">
-                                        <div class="small_div" style="width: 30%;">수질 허가번호</div>
-                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["수질허가번호"]}</div>
+                                        <div class="small_div" style="width: 30%;">사업장업종명</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["사업장업종명"]}</div>
                                     </div><div style="height:20%;width:100%;display:flex;">
-                                        <div class="small_div" style="width: 30%;">위도</div>
-                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["WGS84위도"]}</div>
+                                        <div class="small_div" style="width: 30%;">대표자명</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["대표자명"]}</div>
                                     </div><div style="height:20%;width:100%;display:flex;">
-                                        <div class="small_div1" style="width: 30%;">경도</div>
-                                        <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["WGS84경도"]}</div>
+                                        <div class="small_div1" style="width: 30%;">세차유형</div>
+                                        <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["세차유형"]}</div>
                                     </div>
                                 </div>
                             </div>
@@ -694,14 +746,14 @@
                                         <div class="small_div" style="width: 30%;">세차장 전화번호</div>
                                         <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["세차장전화번호"]}</div>
                                     </div><div style="height:20%;width:100%;display:flex;">
-                                        <div class="small_div" style="width: 30%;">수질 허가번호</div>
-                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["수질허가번호"]}</div>
+                                        <div class="small_div" style="width: 30%;">사업장업종명</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["사업장업종명"]}</div>
                                     </div><div style="height:20%;width:100%;display:flex;">
-                                        <div class="small_div" style="width: 30%;">위도</div>
-                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["WGS84위도"]}</div>
+                                        <div class="small_div" style="width: 30%;">대표자명</div>
+                                        <div class="small_div2" style="width: 70%;">${car_washer_name[local][i]["대표자명"]}</div>
                                     </div><div style="height:20%;width:100%;display:flex;">
-                                        <div class="small_div1" style="width: 30%;">경도</div>
-                                        <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["WGS84경도"]}</div>
+                                        <div class="small_div1" style="width: 30%;">세차유형</div>
+                                        <div class="small_div1 small_div2" style="width: 70%;box-shadow: 0px 0px 0px 0px gray;">${car_washer_name[local][i]["세차유형"]}</div>
                                     </div>
                                 </div>
                             </div>
@@ -717,7 +769,7 @@
         $("#sel").change(function () {
             let setPageCount = 0;
             let html = `<li class="page-item disabled">
-                <a class="page-link">이전</a>
+                <a class="page-link"><</a>
             </li>`;
             let local = $(this).val();
             if (car_washer_name[local].length % 11 == 0) {
@@ -733,7 +785,7 @@
             }
             //console.log(setPageCount);
             html += `<li class="page-item">
-                <a class="page-link" href="#" style="color: gray;">다음</a>
+                <a class="page-link" href="#" style="color: gray;">></a>
             </li>`
             $(".pagination").html(html);
             let pathname = $(location).attr('hash');
@@ -746,7 +798,7 @@
             })
 
         })
-        const onClickPage = () => {
+        const onClickPage = (obj) => {
             setTimeout(() => {
                 let pathname = $(location).attr('hash');
                 let local = $("#sel").val();
@@ -760,7 +812,7 @@
         const onClickDetail = (obj) => {
             if ($(obj).text() === "+") {
                 $(obj).text("-")
-                console.log($(obj).text());
+                //console.log($(obj).text());
                 $(obj).parent().next().css({
                     "height": "300px",
                     "transition": "0.5s"

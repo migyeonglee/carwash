@@ -65,19 +65,9 @@ app.get("/ranking", (req, res) => {
     const fs1 = require('fs')
     for (let index = 0; index < region.length; index++) {
         let file = JSON.parse(fs1.readFileSync(`./data/ranking_${region[index]}.json`));
-        console.log(file[0])
+        //console.log(file[0])
         for (let i = 0; i < file.length; i++) {
-
             ranking_index[region[index]].push(i);
-
-
-
-
-
-
-
-
-
         }
 
     }
@@ -91,13 +81,13 @@ app.get("/ranking", (req, res) => {
             car_washer_name[region[index]].push(file2[i]);
         }
     }
-    console.log("get", rating["서울특별시"]);
-    for (let i = 0; i < region.length; i++) {
-        rating[region[i]].sort(function(a, b) {
+    //console.log("get",rating["서울특별시"]);
+    for(let i=0;i<region.length;i++){
+        rating[region[i]].sort(function(a,b){
             return b.like - a.like;
         })
     }
-    console.log("get", rating["서울특별시"]);
+    //console.log("get",rating["서울특별시"]);
     // console.log(car_washer_name);
     res.render("ranking", { region: region, rating: rating, car_washer_name: car_washer_name, ranking_index: ranking_index });
 })
@@ -233,7 +223,7 @@ app.get("/search", (req, res) => {
     const fs1 = require('fs')
     for (let index = 0; index < region.length; index++) {
         let file = JSON.parse(fs1.readFileSync(`./data/ranking_${region[index]}.json`));
-        console.log(file[0])
+        //console.log(file[0])
         for (let i = 0; i < file.length; i++) {
 
             ranking_index[region[index]].push(i);
@@ -251,8 +241,9 @@ app.get("/search", (req, res) => {
             car_washer_name[region[index]].push(file2[i]);
         }
     }
-    console.log("get", rating["서울특별시"]);
-    console.log("get", rating["서울특별시"]);
+    //console.log("get",rating["서울특별시"]);
+    //console.log("get",rating["서울특별시"]);
+
     res.render("search", { region: region, rating: rating, car_washer_name: car_washer_name, ranking_index: ranking_index });
 
 })
@@ -261,7 +252,9 @@ app.post('/post', function(req, res) {
     //console.log(req.body)
     let data = req.body.data;
 
-    console.log('post', JSON.parse(data)["서울특별시"]);
+
+    //console.log('post',JSON.parse(data)["서울특별시"]);
+
     let real_data = JSON.parse(data);
     // console.log(real_data["서울특별시"]);
     let fs = require("fs")
